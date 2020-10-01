@@ -28,6 +28,10 @@
         <servlet-name>ServletClient</servlet-name>
         <servlet-class>servlets.ServletClient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletLieu</servlet-name>
+        <servlet-class>servlets.ServletLieu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes</url-pattern>
@@ -48,29 +52,38 @@
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes/listerLesCourriels</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes/listerLesChevaux</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes/listerInfosCheval</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes/listerCourseCheval</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletCategorie</servlet-name>
         <url-pattern>/ServletCategorie/ajouterCategorie</url-pattern>
     </servlet-mapping>
-    
-    
-    
+    <servlet-mapping>
+        <servlet-name>ServletLieu</servlet-name>
+        <url-pattern>/ServletLieu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLieu</servlet-name>
+        <url-pattern>/ServletLieu/ajouterLieu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLieu</servlet-name>
+        <url-pattern>/ServletLieu/consulterLieu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLieu</servlet-name>
+        <url-pattern>/ServletLieu/listerLesLieux</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
