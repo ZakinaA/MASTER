@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import modele.CategVente;
 import modele.Client;
 /**
- *
- * @author Zakina
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class CategVenteDAO {
     

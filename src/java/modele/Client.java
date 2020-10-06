@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Zakina
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class Client {
     
@@ -22,8 +17,14 @@ public class Client {
     private String mail;
     private Pays unPays ;
     private ArrayList<CategVente> lesCategVentes ;
+    private int NbCateg;
+    private int NbVente;
 
     public Client() {
+    }
+    
+    public Client(int id) {
+        this.id = id;
     }
 
     public Client(int id, String nom, String prenom) {
@@ -111,5 +112,25 @@ public class Client {
         lesCategVentes.add(uneCategVente);
     }
 
+    //method renvoyant le nb de catégorie par client 
+    public int getNbCateg(){
+        NbCateg = lesCategVentes.size();
+        return NbCateg;
+    }
+    
+    public int getNbVentes(String year){
+        for (int i = 0; i < lesCategVentes.size(); i++){
+            CategVente cv = lesCategVentes.get(id);
+            
+            for (int x = 0; x < cv.getLesVentes().size(); x++){    
+                Vente v = cv.getLesVentes().get(id);
+                if (v.getDateDebutVente() == "2019"){
+                    NbVente += 1;
+                }
+            }
+        }
+ 
+        return NbVente;
+    }
 	
 }

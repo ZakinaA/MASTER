@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
+import database.VenteDAO;
 import java.util.ArrayList;
 
 /**
- *
- * @author Zakina
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class Vente {
     private int id;
@@ -20,6 +16,7 @@ public class Vente {
     private ArrayList<Courriel> lesCourriels ;
     private ArrayList<TypeCheval> lesTypesDeChevaux;
     private Vente uneVente;
+    private int NbCourriels;
 
     public Vente() {
     }
@@ -29,6 +26,7 @@ public class Vente {
         this.nom = nom;
         this.dateDebutVente = dateDebutVente;
     }
+
 
 	public int getId() {
         return id;
@@ -108,5 +106,10 @@ public class Vente {
         this.uneVente = uneVente;
     }
     
+    //methode permettant de renvoyer le nb de courriels.
+    public int getNbCourriel(){
+       NbCourriels = lesCourriels.size();
+        return NbCourriels;
+    }
     
 }

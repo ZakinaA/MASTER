@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author sio2
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class TypeCheval {
     private int id;
@@ -19,6 +14,10 @@ public class TypeCheval {
     private ArrayList<Cheval> lesChevaux;
 
     public TypeCheval() {
+    }
+    
+    public TypeCheval(int id) {
+        this.id = id;
     }
 
     

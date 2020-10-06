@@ -68,11 +68,11 @@ public class ChevalForm {
         String nom = getDataForm( request, "nom" );
         String sexe = getDataForm( request, "sexe" );
         String prixDepart = getDataForm( request, "prixDepart" );
-        String SIRE = getDataForm( request, "SIRE" );
-        String client = getDataForm(request, "client");
-        String typeCheval = getDataForm(request, "typeCheval");
-        String mere = getDataForm(request, "mere");
-        String pere = getDataForm(request, "pere");
+        String SIRE = getDataForm( request, "sire" );
+        int client =  Integer.parseInt(getDataForm(request, "client"));
+        int typeCheval = Integer.parseInt(getDataForm(request, "typeCheval"));
+        int mere = Integer.parseInt(getDataForm(request, "mere"));
+        int pere = Integer.parseInt(getDataForm(request, "pere"));
         
  
        
@@ -94,6 +94,10 @@ public class ChevalForm {
         unCheval.setSexe(sexe);
         unCheval.setPrixDepart(Integer.parseInt(prixDepart));
         unCheval.setSIRE(SIRE);
+        unCheval.setUnClient(new Client(client));
+        unCheval.setLeTypeDeCheval(new TypeCheval(typeCheval));
+        unCheval.setMere(new Cheval(mere));
+        unCheval.setPere(new Cheval(pere));
         
                
        

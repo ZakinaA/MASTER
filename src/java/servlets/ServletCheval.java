@@ -7,21 +7,28 @@ package servlets;
 
 import database.CategVenteDAO;
 import database.ChevalDAO;
+import database.ClientDAO;
 import database.PaysDAO;
+import database.TypeDeChevalDAO;
+import database.Utilitaire;
+import database.VenteDAO;
+import formulaires.ChevalForm;
+import formulaires.ClientForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.CategVente;
 import modele.Cheval;
+import modele.Client;
 import modele.Pays;
-
+import modele.TypeCheval;
+import modele.Vente;
 /**
  *
  * @author sio2
@@ -77,16 +84,40 @@ public class ServletCheval extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = request.getRequestURI();
+            String url = request.getRequestURI();
        
        if(url.equals("/EquidaWeb20/ServletCheval/ajouterCheval"))
         {                   
-            //ArrayList<Cheval> lesChevaux = ChevalDAO.(connection);
-            //request.setAttribute("pLesPays", lesPays);
+            ArrayList<Cheval> lesChevaux = ChevalDAO.getLesChevaux(connection);
+            request.setAttribute("pLesChevaux", lesChevaux);
             
-            ArrayList<CategVente> lesCategVentes = CategVenteDAO.getLesCategVentes(connection);
-            request.setAttribute("pLesCategVente", lesCategVentes);
-            this.getServletContext().getRequestDispatcher("/vues/clients/clientAjouter.jsp" ).forward( request, response );
+            ArrayList<TypeCheval> lesTypeDeChevaux = TypeDeChevalDAO.getLesTypeDeChevaux(connection);
+            request.setAttribute("pLesTypesDeChevaux", lesTypeDeChevaux);
+            
+            ArrayList<Client> lesClients = ClientDAO.getLesClients(connection);
+            request.setAttribute("pLesClients", lesClients);
+            
+            ArrayList<Cheval> lesChevauxMere = ChevalDAO.getLesChevaux(connection);
+            request.setAttribute("pLesChevauxMere", lesChevauxMere);
+            
+            ArrayList<Cheval> lesChevauxPere = ChevalDAO.getLesChevaux(connection);
+            request.setAttribute("pLesChevauxPere", lesChevauxPere);
+            
+            getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
+        }
+       
+       if(url.equals("/EquidaWeb20/ServletCheval/listerCheval"))
+        {  
+            ArrayList<Cheval> lesChevaux = ChevalDAO.getLesChevaux(connection);
+            request.setAttribute("pLesChevaux", lesChevaux);
+            getServletContext().getRequestDispatcher("/vues/cheval/chevalLister.jsp").forward(request, response);
+        }
+       
+       if(url.equals("/EquidaWeb20/ServletCheval/deleteCheval"))
+        {  
+            int idCheval = Integer.parseInt(request.getParameter("idCheval"));
+            //ChevalDAO.deleteCheval(connection, idCheval);
+            response.sendRedirect("/EquidaWeb20/ServletCheval/listerCheval"); 
         }
     }
 
@@ -100,8 +131,33 @@ public class ServletCheval extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+             throws ServletException, IOException {
+               
+         /* Préparation de l'objet formulaire */
+        ChevalForm form = new ChevalForm();
+		
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Cheval unCheval = form.ajouterCheval(request);
+        
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute("form", form);
+        request.setAttribute("pCheval", unCheval);
+		
+        if (form.getErreurs().isEmpty()){
+            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+            ChevalDAO.ajouterCheval(connection, unCheval);
+            this.getServletContext().getRequestDispatcher("/vues/cheval/chevalConsulter.jsp" ).forward( request, response );
+        }
+        else
+        { 
+		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Pays> lesPays = PaysDAO.getLesPays(connection);
+            request.setAttribute("pLesPays", lesPays);
+            
+            ArrayList<CategVente> lesCategVentes = CategVenteDAO.getLesCategVentes(connection);
+            request.setAttribute("pLesCategVente", lesCategVentes);
+           this.getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
+        }
     }
 
     /**
@@ -113,5 +169,25 @@ public class ServletCheval extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public void destroy(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+    {
+        try
+        {
+            //fermeture
+            System.out.println("Connexion fermée");
+        }
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+            System.out.println("Erreur lors de l’établissement de la connexion");
+        }
+        finally
+        {
+            //Utilitaire.fermerConnexion(rs);
+            //Utilitaire.fermerConnexion(requete);
+            Utilitaire.fermerConnexion(connection);
+        }
+    }
 
 }

@@ -81,29 +81,29 @@ public final class chevalAjouter_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("            </div>\n");
       out.write("                \n");
       out.write("            <div class=\"form-group\">\n");
-      out.write("                <label for=\"prenom\">Sexe : </label>\n");
-      out.write("                <input class=\"form-control\" id=\"prenom\"  type=\"text\"  name=\"prenom\" size=\"30\" maxlength=\"30\">      \n");
+      out.write("                <label for=\"sexe\">Sexe : </label>\n");
+      out.write("                <input class=\"form-control\" id=\"sexe\"  type=\"text\"  name=\"sexe\" size=\"30\" maxlength=\"30\">      \n");
       out.write("            </div>\n");
       out.write("              \n");
       out.write("            <div class=\"form-group\">\n");
-      out.write("                <label for=\"rue\">Prix Départ : </label>\n");
-      out.write("                <input class=\"form-control\" id=\"rue\"  type=\"text\"  name=\"rue\" size=\"30\" maxlength=\"50\">\n");
+      out.write("                <label for=\"prixDepart\">Prix Départ : </label>\n");
+      out.write("                <input class=\"form-control\" id=\"prixDepart\"  type=\"text\"  name=\"prixDepart\" size=\"30\" maxlength=\"50\">\n");
       out.write("            </div>\n");
       out.write("                               \n");
       out.write("            <div class=\"form-group\">\n");
-      out.write("                <label for=\"copos\">SIRE : </label>\n");
-      out.write("                <input class=\"form-control\" id=\"copos\"  type=\"text\"  name=\"copos\" size=\"5\" maxlength=\"5\">\n");
+      out.write("                <label for=\"sire\">SIRE : </label>\n");
+      out.write("                <input class=\"form-control\" id=\"sire\"  type=\"text\"  name=\"sire\" size=\"5\" maxlength=\"5\">\n");
       out.write("            </div>\n");
       out.write("                \n");
       out.write("            <div class=\"form-group\">    \n");
       out.write("                ");
       out.write("\n");
-      out.write("                <label for=\"pays\">Client : </label>\n");
-      out.write("                <select class=\"form-control\" id=\"codePays\" name =\"pays\">\n");
+      out.write("                <label for=\"client\">Client : </label>\n");
+      out.write("                <select class=\"form-control\" id=\"id_client\" name =\"client\">\n");
       out.write("                    ");
 
                         ArrayList<Client> lesClients = (ArrayList)request.getAttribute("pLesClients");
-                        for (int i=0; i<lesClients.size();i++){
+                        for (int i=0; i < lesClients.size(); i++){
                             Client c = lesClients.get(i);
                             out.println("<option value='" + c.getId()+"'>" + c.getNom()+"</option>" );
                         } 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import database.CategVenteDAO;
@@ -21,8 +16,8 @@ import modele.CategVente;
 
 
 /**
- *
- * @author sio2
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 @WebServlet(name = "ServletCategorie", urlPatterns = {"/ServletCategorie"})
 public class ServletCategorie extends HttpServlet {

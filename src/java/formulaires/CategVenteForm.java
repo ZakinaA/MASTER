@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package formulaires;
 
 import java.util.Enumeration;
@@ -14,8 +9,8 @@ import modele.Client;
 import modele.Pays;
 
 /**
- *
- * @author Zakina
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class CategVenteForm {
     

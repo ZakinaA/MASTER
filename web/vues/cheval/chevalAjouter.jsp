@@ -1,3 +1,4 @@
+<%@page import="modele.Cheval"%>
 <%@page import="modele.TypeCheval"%>
 <%@page import="modele.Client"%>
 <%@page import="modele.CategVente"%>
@@ -23,18 +24,28 @@
             %>
         <div class="container-lg">
             <h1 class="display-3">NOUVEAU CHEVAL</h1>
-        <form action="ajouterCheval" method="POST">
+            <form action="ajouterCheval" method="POST">
             <div class="form-group">
                 <label for="nom">Nom : </label>
                 <input class="form-control" id="nom" type="text" name="nom"  size="30" maxlength="30" >
             </div>
-                
-            <div class="form-group">
-                <label for="sexe">Sexe : </label>
-                <input class="form-control" id="sexe"  type="text"  name="sexe" size="30" maxlength="30">      
-            </div>
+            
+            Sexe :
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sexe" id="exampleRadios1" value="M" checked>
+                <label class="form-check-label" for="sexe">
+                  Mâle
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="sexe" id="exampleRadios2" value="F">
+                <label class="form-check-label" for="sexe">
+                  Femelle
+                </label> 
+              </div>
               
             <div class="form-group">
+                <br>
                 <label for="prixDepart">Prix Départ : </label>
                 <input class="form-control" id="prixDepart"  type="text"  name="prixDepart" size="30" maxlength="50">
             </div>
@@ -43,14 +54,14 @@
                 <label for="sire">SIRE : </label>
                 <input class="form-control" id="sire"  type="text"  name="sire" size="5" maxlength="5">
             </div>
-                
+              
             <div class="form-group">    
                 <%-- Champ Liste des pays --%>
                 <label for="client">Client : </label>
                 <select class="form-control" id="id_client" name ="client">
                     <%
                         ArrayList<Client> lesClients = (ArrayList)request.getAttribute("pLesClients");
-                        for (int i=0; i<lesClients.size();i++){
+                        for (int i=0; i < lesClients.size(); i++){
                             Client c = lesClients.get(i);
                             out.println("<option value='" + c.getId()+"'>" + c.getNom()+"</option>" );
                         } 
@@ -70,7 +81,35 @@
                         }
                     %>
                 </select>
-            </div>     
+            </div>
+                
+            <div class="form-group">
+                <label for="mere">Mere : </label>
+                <select class="form-control" name="mere">
+                <%
+                        ArrayList<Cheval> lesChevauxMere = (ArrayList)request.getAttribute("pLesChevauxMere");
+                        for (int i=0; i< lesChevauxMere.size();i++){
+                            Cheval che = lesChevauxMere.get(i);
+                            out.println("<option value ='" + che.getId() + "'>" + che.getNom() + "</option>"); 
+                           
+                        }
+                    %>
+                </select>
+            </div>
+                
+            <div class="form-group">
+                <label for="pere">Pere : </label>
+                <select class="form-control" name="pere">
+                <%
+                        ArrayList<Cheval> lesChevauxPere = (ArrayList)request.getAttribute("pLesChevauxPere");
+                        for (int i=0; i< lesChevauxPere.size();i++){
+                            Cheval che = lesChevauxPere.get(i);
+                            out.println("<option value ='" + che.getId() + "'>" + che.getNom() + "</option>"); 
+                           
+                        }
+                    %>
+                </select>
+            </div>
                  
                 
                     <button class="btn btn-outline-success" type="submit" name="valider" id="valider" value="Valider">Valider</button> <br>

@@ -3,9 +3,9 @@ package modele;
 import java.util.ArrayList;
 
 /**
-*
-* @author DUBOSQ
-*/
+ * update 01/10/2020
+ * @author DUBOSQ
+ */
 public class PieceJointe {
 
 	private int id;

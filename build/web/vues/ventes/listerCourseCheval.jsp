@@ -4,6 +4,7 @@
     Author     : Zakina
 --%>
 
+<%@page import="modele.Cheval"%>
 <%@page import="modele.Participer"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,6 +26,13 @@
         
          <%
         ArrayList<Participer> lesParticipations = (ArrayList)request.getAttribute("pIdCheval");
+        /*
+        if (lesParticipations == null){
+            Cheval unChevalNull = new Cheval();
+            unChevalNull.setNom("Pas de course!");
+            lesParticipations.add(unChevalNull);
+        }
+        */
         %>
         
         <h1>LISTE DES COURSES DE <% out.print("" + lesParticipations.get(0).getUnCheval().getNom().toUpperCase()); %> </h1> 

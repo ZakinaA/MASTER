@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package database;
 
 import static database.PaysDAO.requete;
@@ -15,10 +10,8 @@ import modele.Client;
 import modele.Pays;
 
 /**
- *
- * @author Zakina
- * 23/06/2017
- * Classe faisant la liaison entre la table client et la classe Client
+ * update 01/10/2020
+ * @author DUBOSQ
  */
 public class ClientDAO {
     
@@ -31,7 +24,7 @@ public class ClientDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("select * from clients");
+            requete=connection.prepareStatement("select * from client");
             
             //executer la requete
             rs=requete.executeQuery();
