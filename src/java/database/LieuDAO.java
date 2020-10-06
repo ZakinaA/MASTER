@@ -52,8 +52,10 @@ public class LieuDAO {
         }
         return lesLieux ;    
     } 
+     
+    public 
     
-      public static Lieu ajouterLieu(Connection connection, Lieu unLieu){      
+    public static Lieu ajouterLieu(Connection connection, Lieu unLieu){      
         int idGenere = -1;
         try
         {

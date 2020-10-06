@@ -91,6 +91,13 @@ public class ServletLieu extends HttpServlet {
             request.setAttribute("pLesLieux", lesLieux);
             getServletContext().getRequestDispatcher("/vues/lieu/listerLesLieux.jsp").forward(request, response);
         }
+        if(url.equals("/EquidaWeb20/ServletLieu/listerLesLieux?idLieu1="))
+        {  
+            ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
+            request.setAttribute("pLesLieux", lesLieux);
+            getServletContext().getRequestDispatcher("/vues/lieu/listerLesLieux.jsp").forward(request, response);
+        }
+        
     }
     /**
      * Handles the HTTP <code>POST</code> method.

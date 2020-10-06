@@ -61,11 +61,11 @@
                         out.println(unLieu.getCommentaire());
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu="+ unLieu.getId()+"'>");
+                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu1="+ unLieu.getId()+"'>");
                         out.println("Modifier");
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu="+ unLieu.getId()+"'>");
+                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu2="+ unLieu.getId()+"'>");
                         out.println("Supprimer");
                         out.println("</td>");
                         
