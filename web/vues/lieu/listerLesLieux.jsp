@@ -62,11 +62,11 @@
                         out.println("</td>");
                         
                         out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu1="+ unLieu.getId()+"'>");
-                        out.println("Modifier");
+                        out.println("<center><i class='fas fa-edit text-dark'></i></center>");
                         out.println("</td>");
                         
                         out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu2="+ unLieu.getId()+"'>");
-                        out.println("Supprimer");
+                        out.println("<center><i class='fas fa-trash-alt text-dark'></i></center>");
                         out.println("</td>");
                         
                     }
