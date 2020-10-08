@@ -25,7 +25,7 @@
                 //Client client=(Client)request.getAttribute("client");
                 ClientForm form = (ClientForm)request.getAttribute("form");
             %>
-        <div class="container-lg">
+        <div class="container-md">
             <h1 class="display-3">NOUVEAU CLIENT</h1>
         <form action="ajouterClient" method="POST">
             <div class="form-group">

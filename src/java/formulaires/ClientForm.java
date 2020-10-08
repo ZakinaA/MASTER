@@ -45,8 +45,8 @@ public class ClientForm {
         }
     }
 
-    private void setErreur( String champ, String message ) {
-    erreurs.put(champ, message );
+    private void setErreur(String champ, String message ) {
+    erreurs.put(champ, message);
     }    
     
     private static String getDataForm( HttpServletRequest request, String nomChamp ) {

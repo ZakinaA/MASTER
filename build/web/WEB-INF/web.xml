@@ -32,6 +32,22 @@
         <servlet-name>ServletLieu</servlet-name>
         <servlet-class>servlets.ServletLieu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCategorie</servlet-name>
+        <servlet-class>servlets.ServletCategorie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>servlets.ServletLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <servlet-class>servlets.ServletLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletConnexion</servlet-name>
+        <servlet-class>servlets.ServletConnexion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes</url-pattern>
@@ -87,6 +103,22 @@
     <servlet-mapping>
         <servlet-name>ServletLieu</servlet-name>
         <url-pattern>/ServletLieu/modifierLieu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/rejoindre</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConnexion</servlet-name>
+        <url-pattern>/connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <url-pattern>/_deconnexion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

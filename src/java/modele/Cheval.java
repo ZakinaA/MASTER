@@ -14,6 +14,7 @@ public class Cheval {
     private String vendeur;
     private String SIRE;
     private String img_url;
+    private int isActive;
     private TypeCheval leTypeDeCheval;
     private Client unClient;
     private Cheval mere;
@@ -84,6 +85,15 @@ public class Cheval {
     public void setImg_url(String img_url) {
         this.img_url = img_url;
     }
+
+    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
+    }
+    
     
     public TypeCheval getLeTypeDeCheval() {
         return leTypeDeCheval;

@@ -1,3 +1,4 @@
+<%@page import="formulaires.ChevalForm"%>
 <%@page import="modele.Cheval"%>
 <%@page import="modele.TypeCheval"%>
 <%@page import="modele.Client"%>
@@ -20,7 +21,7 @@
         
          <%
                 //Client client=(Client)request.getAttribute("client");
-                ClientForm form = (ClientForm)request.getAttribute("form");
+                ChevalForm form = (ChevalForm)request.getAttribute("form");
             %>
         <div class="container-lg">
             <h1 class="display-3">NOUVEAU CHEVAL</h1>

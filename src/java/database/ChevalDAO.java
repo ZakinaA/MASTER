@@ -32,10 +32,10 @@ public class ChevalDAO {
         try
         {
             //preparation de la requete     
-            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, cheval.sexe, cheval.prixDepart, cheval.SIRE, cheval.img_url, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur "
+            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, cheval.sexe, cheval.prixDepart, cheval.SIRE, cheval.img_url, cheval.isActive, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur "
                     + "FROM client, cheval, typecheval, cheval chevalPere, cheval chevalMere "
-                    + "WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id AND cheval.id_client = client.id "
-                    + "ORDER BY cheval.id;");
+                    + "WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id "
+                    + "AND cheval.id_client = client.id AND cheval.isActive = 1 order by cheval.id;");
             
             //executer la requete
             rs=requete.executeQuery();
@@ -48,6 +48,7 @@ public class ChevalDAO {
                 unCheval.setPrixDepart(rs.getInt("prixDepart"));
                 unCheval.setSIRE(rs.getString("SIRE"));
                 unCheval.setImg_url(rs.getString("img_url"));
+                unCheval.setIsActive(rs.getInt("isActive"));
                
                 Cheval unChevalPere = new Cheval();
                 unChevalPere.setNom(rs.getString("pere"));
@@ -122,7 +123,7 @@ public class ChevalDAO {
          try {
              requete=connection.prepareStatement("DELETE FROM cheval WHERE id = ?");
              requete.setInt(1, idCheval);
-             rs=requete.executeQuery();
+             requete.executeUpdate();
          } catch (Exception e) {
              e.printStackTrace();
          }
