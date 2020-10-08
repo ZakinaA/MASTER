@@ -7,6 +7,7 @@ package database;
 
 import static database.ClientDAO.requete;
 import static database.ClientDAO.rs;
+import static database.VenteDAO.requete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,6 +52,35 @@ public class LieuDAO {
             //out.println("Erreur lors de l’établissement de la connexion");
         }
         return lesLieux ;    
+    } 
+     
+    public static ArrayList<Lieu>  getLeLieu(Connection connection, String idLieu1){      
+        ArrayList<Lieu> leLieu = new  ArrayList<Lieu>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from lieu where id = ?");
+            requete.setString(1, idLieu1);
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Lieu avec les résultats de la requête
+            while ( rs.next() ) {  
+                Lieu unLieu = new Lieu();
+                unLieu.setId(rs.getInt("id"));
+                unLieu.setVille(rs.getString("ville"));
+                unLieu.setNbBoxes(rs.getInt("nbBoxes"));
+                unLieu.setCommentaire(rs.getString("commentaire"));
+                leLieu.add(unLieu);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return leLieu ;    
     } 
     
     public static Lieu ajouterLieu(Connection connection, Lieu unLieu){      

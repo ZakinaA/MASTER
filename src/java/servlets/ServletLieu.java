@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.CategVente;
 import modele.Lieu;
+import modele.Participer;
 import modele.Vente;
 
 /**
@@ -91,11 +92,13 @@ public class ServletLieu extends HttpServlet {
             request.setAttribute("pLesLieux", lesLieux);
             getServletContext().getRequestDispatcher("/vues/lieu/listerLesLieux.jsp").forward(request, response);
         }
-        if(url.equals("/EquidaWeb20/ServletLieu/listerLesLieux?idLieu1="))
+        if(url.equals("/EquidaWeb20/ServletLieu/modifierLieu"))
         {  
-            ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
-            request.setAttribute("pLesLieux", lesLieux);
-            getServletContext().getRequestDispatcher("/vues/lieu/listerLesLieux.jsp").forward(request, response);
+            String idLieu1 = (String)request.getParameter("idLieu1");
+
+            ArrayList<Lieu> leLieu = LieuDAO.getLeLieu(connection, idLieu1);
+            request.setAttribute("pLeLieu", leLieu);
+            getServletContext().getRequestDispatcher("/vues/lieu/lieuModifier.jsp").forward(request, response);
         }
         
     }

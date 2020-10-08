@@ -15,30 +15,29 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <title>Consultation lieu</title>
+        <title>Modification lieu</title>
     </head>
     <body>
         <h1>Infos lieu</h1>
         
          <%
-        Lieu unLieu = (Lieu)request.getAttribute("pLieu");
+        Lieu leLieu = (Lieu)request.getAttribute("pLieu");
         %>
         <div class="container-lg">
-            <h1 class="display-3">NOUVEAU LIEU</h1>
-        <form action="ajouterLieu" method="POST">
+        <form action="modifierLieu" method="POST">
             <div class="form-group">
-                <label for="ville">VILLE : </label>
-                <input class="form-control" id="ville" type="text" name="ville"  size="40" maxlength="40" >
+                <label for="ville"></label>
+                <input class="form-control" id="ville" type="text" name="ville" value="<%out.println(leLieu.getVille());%>"  size="40" maxlength="40" >
             </div>
                 
             <div class="form-group">
-                <label for="nbBoxes"><%  out.println(unLieu.getNbBoxes());%></label>
-                <input class="form-control" id="nbBoxes"  type="number"  name="nbBoxes" size="3" maxlength="3">      
+                <label for="nbBoxes"></label>
+                <input class="form-control" id="nbBoxes"  type="number" value="<%out.println(leLieu.getNbBoxes());%>" name="nbBoxes" size="3" maxlength="3">      
             </div>
             
             <div class="form-group">
-                <label for="commentaire"><%  out.println(unLieu.getCommentaire());%></label>
-                <input class="form-control" id="commentaire"  type="text"  name="commentaire" size="30" maxlength="30">      
+                <label for="commentaire"></label>
+                <input class="form-control" id="commentaire"  type="text" value="<%out.println(leLieu.getCommentaire());%>" name="commentaire" size="30" maxlength="30">      
             </div>
             <button class="btn btn-outline-success" type="submit" name="valider" id="valider" value="Valider">Ajouter</button> <br>
         

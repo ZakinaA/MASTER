@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/ClientDAO.java</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/lieu/lieuConsulter.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/CategVenteDAO.java</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletLieu.java</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/formulaires/LieuForm.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/formulaires/ClientForm.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/modele/CategVente.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/ventes/listerLesChevaux.jsp</file>
@@ -15,11 +17,14 @@
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/ventes/listerLesVentes.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/modele/Lot.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/cheval/chevalAjouter.jsp</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/InitConnexion.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletClient.java</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/lieu/listerLesLieux.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/ventes/listerLesClients.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/categorie/categorieAjouter.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/ventes/listerLesCourriels.jsp</file>
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/LieuDAO.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/modele/Lieu.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletVentes.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/formulaires/ChevalForm.java</file>
@@ -29,16 +34,7 @@
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/categorie/categorieConsulter.jsp</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/TypeDeChevalDAO.java</file>
             <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/src/java/database/PaysDAO.java</file>
-=======
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/index.html</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/database/ChevalDAO.java</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/database/VenteDAO.java</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletCheval.java</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletVentes.java</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/vues/cheval/chevalAjouter.jsp</file>
-            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/vues/cheval/chevalLister.jsp</file>
->>>>>>> 10e435c7e28969a04674c9a88820ea8dc987b6af
+            <file>file:/C:/Users/sio2/Documents/NetBeansProjects/MASTER/web/vues/lieu/lieuModifier.jsp</file>
         </group>
     </open-files>
 </project-private>

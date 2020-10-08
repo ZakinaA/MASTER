@@ -61,11 +61,11 @@
                         out.println(unLieu.getCommentaire());
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu1="+ unLieu.getId()+"'>");
+                        out.println("<td><a href ='../ServletLieu/modifierLieu?idLieu1="+ unLieu.getId()+"'>");
                         out.println("<center><i class='fas fa-edit text-dark'></i></center>");
                         out.println("</td>");
                         
-                        out.println("<td><a href ='../ServletVentes/listerLesChevaux?idLieu2="+ unLieu.getId()+"'>");
+                        out.println("<td><a href ='../ServletLieu/listerLesLieux?idLieu2="+ unLieu.getId()+"'>");
                         out.println("<center><i class='fas fa-trash-alt text-dark'></i></center>");
                         out.println("</td>");
                         
