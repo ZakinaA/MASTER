@@ -206,7 +206,7 @@ public class VenteDAO {
         try
         {
               unCheval = new Cheval();
-            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, cheval.sexe, cheval.prixDepart, cheval.SIRE, cheval.img_url as img, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur, chevalPere.id as idpere, chevalMere.id as idmere, entraineur.nom as nomEntraineur FROM client, cheval, typecheval, cheval chevalPere, cheval chevalMere, entraineur WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id AND cheval.id_client = client.id AND cheval.id = ?");
+            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, cheval.sexe, cheval.prixDepart, cheval.SIRE, cheval.img_url as img, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur, chevalPere.id as idpere, chevalMere.id as idmere, entraineur.nom as nomEntraineur FROM client, cheval, typecheval, cheval chevalPere, cheval chevalMere, entraineur WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id AND cheval.idEntraineur = entraineur.id AND cheval.id_client = client.id AND cheval.id = ?");
             requete.setInt(1, Integer.parseInt(idCheval));
             
             System.out.println("requete" + requete);

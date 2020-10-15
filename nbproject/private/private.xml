@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/src/java/servlets/ServletLogin.java</file>
             <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/src/java/servlets/ServletVentes.java</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/cheval/chevalLister.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/ventes/listerLesChevaux.jsp</file>
             <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/ventes/listerInfosCheval.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/categorie/categorieConsulter.jsp</file>
+            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/WEB-INF/web.xml</file>
+            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/src/java/database/VenteDAO.java</file>
             <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/ventes/listerCourseCheval.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/categorie/categorieAjouter.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/cheval/chevalAjouter.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/cheval/chevalConsulter.jsp</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/build/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/src/java/servlets/ServletCheval.java</file>
+            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/ventes/listerLesVentes.jsp</file>
+            <file>file:/E:/Documents/MANGION_Pablo/SLAM45/projetServeurProg/MASTER-Noe/MASTER/web/vues/connexion/login.jsp</file>
         </group>
     </open-files>
 </project-private>

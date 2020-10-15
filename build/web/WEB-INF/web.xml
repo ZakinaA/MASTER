@@ -11,11 +11,11 @@
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-        <param-value>ADM_MASTER</param-value>
+        <param-value>USR_MASTER</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-        <param-value>mpMaster</param-value>
+        <param-value>mpUserMaster</param-value>
     </context-param>
     <!--  écouteurs -->
     <listener>

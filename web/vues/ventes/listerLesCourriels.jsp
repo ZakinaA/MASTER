@@ -10,13 +10,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         
         <title>LISTE DES COURRIELS</title>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
             <a class="navbar-brand" href="/MASTER">
-                <img src="vues/Images/black-head-horse-side-view-with-horsehair.png" width="30" height="30" class="d-inline-block align-top"  alt="" loading="lazy">
+                <img src="../vues/Images/black-head-horse-side-view-with-horsehair.png" width="30" height="30" class="d-inline-block align-top"  alt="" loading="lazy">
                 Master
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +57,6 @@
         <!-- FIN DE LA NAVBAR -->
     </head>
     <body>
-        vues/Images/black-head-horse-side-view-with-horsehair.png
         <h1>LISTE DES COURRIELS</h1>
          <%
         ArrayList<Courriel> lesCourriels = (ArrayList)request.getAttribute("pLesCourriels");
