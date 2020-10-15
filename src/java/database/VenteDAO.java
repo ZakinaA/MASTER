@@ -1,5 +1,6 @@
 package database;
 
+import static database.ClientDAO.requete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,9 +55,6 @@ public class VenteDAO {
                 uneCateg.setCode(rs.getString("code"));  // on aurait aussi pu prendre CodeCateg
                 uneCateg.setLibelle(rs.getString("libelle"));
                 
-                uneVente.setUneCategVente(uneCateg);
-                lesVentes.add(uneVente);
-                
                 Lieu unLieu = new Lieu();
                 unLieu.setId(rs.getInt("id"));
                 unLieu.setVille(rs.getString("ville"));
@@ -64,8 +62,8 @@ public class VenteDAO {
                 unLieu.setCommentaire(rs.getString("commentaire"));
                 
                 uneVente.setUnLieu(unLieu);
-                
-                
+                uneVente.setUneCategVente(uneCateg);
+                lesVentes.add(uneVente);
             }
         }   
         catch (SQLException e) 
@@ -288,7 +286,105 @@ public class VenteDAO {
         return lesParticipations;
         
     }
+     public static ArrayList<Lieu>  getLesLieux(Connection connection){      
+        ArrayList<Lieu> lesLieux = new  ArrayList<Lieu>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select * from lieu");
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Lieu avec les résultats de la requête
+            while ( rs.next() ) {  
+                Lieu unLieu = new Lieu();
+                unLieu.setId(rs.getInt("id"));
+                unLieu.setVille(rs.getString("ville"));
+                unLieu.setNbBoxes(rs.getInt("nbBoxes"));
+                unLieu.setCommentaire(rs.getString("commentaire"));
+                lesLieux.add(unLieu);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesLieux ;    
+    } 
+     public static Vente ajouterVente(Connection connection, Vente uneVente){      
+        int idGenere = -1;
+        try
+        {
+            //preparation de la requete
+            // id (clé primaire de la table client) est en auto_increment,donc on ne renseigne pas cette valeur
+            // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
+            // supprimer ce paramètre en cas de requête sans auto_increment.
+            requete=connection.prepareStatement("INSERT INTO vente ( nom, dateDebut, codeCategVente, id_lieu)\n" +
+                    "VALUES (?,?,?,?)", requete.RETURN_GENERATED_KEYS );
+            requete.setString(1, uneVente.getNom());
+            requete.setString(2, uneVente.getDateDebutVente());
+            requete.setString(3, uneVente.getUneCategVente().getCode());
+            requete.setInt(4, uneVente.getUnLieu().getId());
 
+           /* Exécution de la requête */
+           System.out.println("REQUETE = "+ requete);
+            requete.executeUpdate();
+            
+             // Récupération de id auto-généré par la bdd dans la table client
+            rs = requete.getGeneratedKeys();
+            while ( rs.next() ) {
+                idGenere = rs.getInt( 1 );
+                uneVente.setId(idGenere);
+            }
+            
+            
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return uneVente ;    
+    }
+     public static ArrayList<Vente>  getLesVente(Connection connection){      
+        ArrayList<Vente> lesVente = new  ArrayList<Vente>();
+        try
+        {
+            //preparation de la requete     
+            requete=connection.prepareStatement("select v.*, cv.code, l.id AS idLieu from Vente v, CategVente cv, Lieu l WHERE id.l = id_lieu.v AND code.cv = codeCategVente.v");
+            
+            //executer la requete
+            rs=requete.executeQuery();
+            
+            //On hydrate l'objet métier Lieu avec les résultats de la requête
+            while ( rs.next() ) {  
+                Vente uneVente = new Vente();
+                uneVente.setId(rs.getInt("id"));
+                uneVente.setNom(rs.getString("nom"));
+                uneVente.setDateDebutVente(rs.getString("dateDebut"));
+                
+                CategVente uneCategVente = new CategVente();
+                uneCategVente.setCode(rs.getString("code"));
+                uneCategVente.setLibelle(rs.getString("libelle"));
+                
+                Lieu unLieu = new Lieu();
+                unLieu.setId(rs.getInt("idLieu"));
+                unLieu.setVille(rs.getString("ville"));
+                
+                uneVente.setUneCategVente(uneCategVente);
+                uneVente.setUnLieu(unLieu);
+                lesVente.add(uneVente);
+            }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesVente ;    
+    } 
 }
 //SELECT che.*, c.nom as nomVendeur, t.libelle as race FROM client c, cheval che, typecheval t where che.id_client = c.id and che.id_typeCheval=t.id
 //SELECT che.*, v.id, c.nom as nomVendeur, t.libelle as race FROM client c, cheval che, typecheval t, vente v, vente_typecheval vt where che.id_client = c.id and che.id_typeCheval=t.id and t.id = vt.id_vente and vt.id_vente = v.id and v.id = 210717;

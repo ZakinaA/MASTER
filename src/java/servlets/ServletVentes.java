@@ -5,8 +5,14 @@
  */
 package servlets;
 
+import database.CategVenteDAO;
+import database.ClientDAO;
+import database.LieuDAO;
+import database.PaysDAO;
 import database.Utilitaire;
 import database.VenteDAO;
+import formulaires.ClientForm;
+import formulaires.VenteForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,10 +22,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.CategVente;
 import modele.Cheval;
 import modele.Client;
 import modele.Courriel;
+import modele.Lieu;
 import modele.Participer;
+import modele.Pays;
 import modele.Vente;
 import org.omg.CORBA.SystemException;
 
@@ -159,7 +168,16 @@ public class ServletVentes extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/ventes/listerCourseCheval.jsp").forward(request, response);
            
         } 
-        
+        if(url.equals("/EquidaWeb20/ServletVentes/ajouterVente"))
+        {                   
+            
+            ArrayList<CategVente> lesCategVentes = CategVenteDAO.getLesCategVentes(connection);
+            ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
+            System.out.println("LES LIEUX NB ="+ lesLieux.size());
+            request.setAttribute("pLesCategVentes", lesCategVentes);
+            request.setAttribute("pLesLieux", lesLieux);
+            this.getServletContext().getRequestDispatcher("/vues/ventes/venteAjouter.jsp" ).forward( request, response );
+        }
     }
 
     /**
@@ -172,21 +190,47 @@ public class ServletVentes extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
+        VenteForm unFormDeVente = new VenteForm();
+		
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Vente uneVente = unFormDeVente.ajouterVente(request);
+        
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "unFormDeVente", unFormDeVente );
+        request.setAttribute( "pVente", uneVente );
+	System.out.println(unFormDeVente.getErreurs());
+        if (unFormDeVente.getErreurs().isEmpty()){
+            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
+            
+            VenteDAO.ajouterVente(connection, uneVente);
+            this.getServletContext().getRequestDispatcher("/vues/ventes/venteConsulter.jsp" ).forward( request, response );
+        }
+        else
+        { 
+		// il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<CategVente> lesCategVentes = CategVenteDAO.getLesCategVentes(connection);
+            ArrayList<Lieu> lesLieux = LieuDAO.getLesLieux(connection);
+            request.setAttribute("pLesCategVentes", lesCategVentes);
+            request.setAttribute("pLesLieux", lesLieux);
+            this.getServletContext().getRequestDispatcher("/vues/ventes/venteAjouter.jsp" ).forward( request, response );
+        }
+    
     }
+    
 
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-    @Override
+@Override
     public String getServletInfo() {
         return "Short description";
-    }
-    
-  public void destroy(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+    }// </editor-fold>
+
+    public void destroy(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
     {
         try
         {

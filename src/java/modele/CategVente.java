@@ -14,15 +14,19 @@ public class CategVente {
 
     public CategVente() {
     }
-
-    public CategVente(String code, String libelle) {
-        this.code = code;
-        this.libelle = libelle;
-    }
     
-	public String getCode() {
-        return code;
+    public CategVente(String code) {
+        this.code = code;
     }
+
+public CategVente(String code, String libelle) {
+    this.code = code;
+    this.libelle = libelle;
+}
+    
+public String getCode() {
+    return code;
+}
 
     public void setCode(String code) {
         this.code = code;

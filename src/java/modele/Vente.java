@@ -27,6 +27,18 @@ public class Vente {
         this.dateDebutVente = dateDebutVente;
     }
 
+    public Vente(int id, String nom, String dateDebutVente, Lieu unLieu, CategVente uneCategVente, ArrayList<Courriel> lesCourriels, ArrayList<TypeCheval> lesTypesDeChevaux, Vente uneVente, int NbCourriels) {
+        this.id = id;
+        this.nom = nom;
+        this.dateDebutVente = dateDebutVente;
+        this.unLieu = unLieu;
+        this.uneCategVente = uneCategVente;
+        this.lesCourriels = lesCourriels;
+        this.lesTypesDeChevaux = lesTypesDeChevaux;
+        this.uneVente = uneVente;
+        this.NbCourriels = NbCourriels;
+    }
+    
 
 	public int getId() {
         return id;

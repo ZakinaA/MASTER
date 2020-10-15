@@ -6,15 +6,15 @@
     </context-param>
     <context-param>
         <param-name>urlconnexionjdbc</param-name>
-        <param-value>jdbc:mysql://localhost:3306/equida20</param-value>
+        <param-value>jdbc:mysql://172.20.0.241/MASTER</param-value>
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-        <param-value>root</param-value>
+        <param-value>ADM_MASTER</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-        <param-value/>
+        <param-value>mpMaster</param-value>
     </context-param>
     <!--  écouteurs -->
     <listener>
@@ -29,8 +29,8 @@
         <servlet-class>servlets.ServletClient</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletLieu</servlet-name>
-        <servlet-class>servlets.ServletLieu</servlet-class>
+        <servlet-name>ServletCheval</servlet-name>
+        <servlet-class>servlets.ServletCheval</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletCategorie</servlet-name>
@@ -47,6 +47,10 @@
     <servlet>
         <servlet-name>ServletConnexion</servlet-name>
         <servlet-class>servlets.ServletConnexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLieu</servlet-name>
+        <servlet-class>servlets.ServletLieu</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletVentes</servlet-name>
@@ -80,30 +84,43 @@
         <servlet-name>ServletVentes</servlet-name>
         <url-pattern>/ServletVentes/listerCourseCheval</url-pattern>
     </servlet-mapping>
+ 
+    <servlet-mapping>
+        <servlet-name>ServletVentes</servlet-name>
+        <url-pattern>/ServletVentes/ajouterVente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVentes</servlet-name>
+        <url-pattern>/ServletVentes/consulterVente</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletCategorie</servlet-name>
         <url-pattern>/ServletCategorie/ajouterCategorie</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletLieu</servlet-name>
-        <url-pattern>/ServletLieu</url-pattern>
+        <servlet-name>ServletCheval</servlet-name>
+        <url-pattern>/ServletCheval/ajouterCheval</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletLieu</servlet-name>
-        <url-pattern>/ServletLieu/ajouterLieu</url-pattern>
+        <servlet-name>ServletCheval</servlet-name>
+        <url-pattern>/ServletCheval/listerCheval</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletLieu</servlet-name>
-        <url-pattern>/ServletLieu/consulterLieu</url-pattern>
-    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ServletLieu</servlet-name>
         <url-pattern>/ServletLieu/listerLesLieux</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ServletLieu</servlet-name>
-        <url-pattern>/ServletLieu/modifierLieu</url-pattern>
+        <url-pattern>/ServletLieu/consulterLieu</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ServletLieu</servlet-name>
+        <url-pattern>/ServletLieu/ajouterLieu</url-pattern>
+    </servlet-mapping>
+  
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/login</url-pattern>

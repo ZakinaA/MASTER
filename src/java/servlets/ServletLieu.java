@@ -79,7 +79,7 @@ public class ServletLieu extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+        throws ServletException, IOException {
         String url = request.getRequestURI();
         if(url.equals("/EquidaWeb20/ServletLieu/ajouterLieu"))
         {                   
@@ -92,15 +92,6 @@ public class ServletLieu extends HttpServlet {
             request.setAttribute("pLesLieux", lesLieux);
             getServletContext().getRequestDispatcher("/vues/lieu/listerLesLieux.jsp").forward(request, response);
         }
-        if(url.equals("/EquidaWeb20/ServletLieu/modifierLieu"))
-        {  
-            String idLieu1 = (String)request.getParameter("idLieu1");
-
-            ArrayList<Lieu> leLieu = LieuDAO.getLeLieu(connection, idLieu1);
-            request.setAttribute("pLeLieu", leLieu);
-            getServletContext().getRequestDispatcher("/vues/lieu/lieuModifier.jsp").forward(request, response);
-        }
-        
     }
     /**
      * Handles the HTTP <code>POST</code> method.

@@ -19,7 +19,9 @@ public class Lieu {
     	
     }
 
-    
+    public Lieu(int id){
+        this.id = id;
+    }
 	public Lieu(int id, String ville) {
 		this.id = id;
 		this.ville = ville;
