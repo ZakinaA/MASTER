@@ -3,6 +3,7 @@ package org.apache.jsp.vues.ventes;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import modele.Participer;
 import modele.Cheval;
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public final class listerInfosCheval_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -63,7 +65,7 @@ public final class listerInfosCheval_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\r\n");
       out.write("\r\n");
       out.write("            <a class=\"navbar-brand\" href=\"/MASTER\">\r\n");
-      out.write("                <img src=\"vues/Images/black-head-horse-side-view-with-horsehair.png\" width=\"30\" height=\"30\" class=\"d-inline-block align-top\"  alt=\"\" loading=\"lazy\">\r\n");
+      out.write("                <img src=\"../vues/Images/black-head-horse-side-view-with-horsehair.png\" width=\"30\" height=\"30\" class=\"d-inline-block align-top\"  alt=\"\" loading=\"lazy\">\r\n");
       out.write("                Master\r\n");
       out.write("            </a>\r\n");
       out.write("            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n");
@@ -102,7 +104,6 @@ public final class listerInfosCheval_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("    <body>\r\n");
       out.write("        \r\n");
       out.write("    <div class=\"container-lg\">\r\n");
-      out.write("        \r\n");
       out.write("         ");
 
         Cheval unCheval = (Cheval)request.getAttribute("pIdCheval");
@@ -111,75 +112,155 @@ public final class listerInfosCheval_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <h1>LISTE DES INFOS DU CHEVAL ");
  out.print("N° " + unCheval.getId()); 
       out.write(" </h1>\r\n");
-      out.write("        <table class=\"table table-hover table-striped shadow-lg p-3 mb-5 bg-white rounded\">\r\n");
-      out.write("            <thead>\r\n");
-      out.write("              <tr>\r\n");
-      out.write("                    <th>NOM</th>\r\n");
-      out.write("                    <th>SEXE</th>\r\n");
-      out.write("                    <th>PRIX</th>\r\n");
-      out.write("                    <th>SIRE</th>\r\n");
-      out.write("                    <th>PHOTO</th>\r\n");
-      out.write("                    <th>VENDEUR</th>\r\n");
-      out.write("                    <th>RACE</th>\r\n");
-      out.write("                    <th>PERE</th>\r\n");
-      out.write("                    <th>MERE</th>\r\n");
-      out.write("\r\n");
-      out.write("              </tr>\r\n");
-      out.write("            </thead>\r\n");
-      out.write("            <tbody>\r\n");
-      out.write("                <tr>\r\n");
+      out.write("            <div class=\"card mb-3\" style=\"max-width: 1110px;\">\r\n");
+      out.write("                <div class=\"row no-gutters\">\r\n");
+      out.write("                    <div class=\"col-md-4\">\r\n");
       out.write("                    ");
 
-                    
-                        out.println("<td class='align-middle'> ");
-                        out.println(unCheval.getNom());
-                        out.println("</td class='align-middle'>");
-                        
-                        out.println("<td class='align-middle'> ");
-                        out.println(unCheval.getSexe());
-                        out.println("</td>");
-                        
-                        out.println("<td class='align-middle'> ");
-                        out.println(unCheval.getPrixDepart());
-                        out.println("</td>");
-                        
-                        out.println("<td class='align-middle'> ");
-                        out.println(unCheval.getSIRE());
-                        out.println("</td>");
-                        
-                        out.println("<td class='align-middle'> ");
-                        out.println("<img src='../vues/Images/"+ unCheval.getImg_url() +"' width='100' height='100'>");
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getUnClient().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getLeTypeDeCheval().getLibelle());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getPere().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getMere().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td><a href ='../ServletVentes/listerCourseCheval?idCheval="+ unCheval.getId()+"'>");
-                        out.println("Lister les courses");
-                        out.println("</td>");
-                        
-
-                        
-
-                    
+                        out.println("<img src='"+ unCheval.getImg_url() +"' alt='...' class='card-img'>");
                     
       out.write("\r\n");
-      out.write("                </tr>\r\n");
-      out.write("            </tbody>\r\n");
-      out.write("        </table>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    <div class=\"col-md-8\">\r\n");
+      out.write("                        <div class=\"card-body\">\r\n");
+      out.write("                            <table class=\"table table-borderless\">\r\n");
+      out.write("                            <thead>\r\n");
+      out.write("                            <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Nom</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getNom());
+                                   out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Sexe</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getSexe());
+                                    out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                            <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Prix</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getPrixDepart());
+                                   out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Race</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getLeTypeDeCheval().getLibelle());
+                                    out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                            <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">SIRE</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getSIRE());
+                                   out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Vendeur</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getUnClient().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                            <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Père</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    if (unCheval.getPere().getId() != 5) {
+                                    out.println("<td class='align-middle'> <a href ='../ServletVentes/listerInfosCheval?idCheval="+ unCheval.getPere().getId()+"'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }else{
+                                    out.println("<td class='align-middle'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Mère</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    if (unCheval.getMere().getId() != 5) {
+                                    out.println("<td class='align-middle'><a href ='../ServletVentes/listerInfosCheval?idCheval="+ unCheval.getMere().getId()+"'>");
+                                    out.println(unCheval.getMere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }else{
+                                    out.println("<td class='align-middle'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                            <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Entraineur</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getUnEntraineur().getNom());
+                                   out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Liste des courses</h5></th>\r\n");
+      out.write("                                <td><p class=\"card-text\">\r\n");
+      out.write("                                    ");
+
+                                    out.println("<td class='align-middle'><a href ='../ServletVentes/listerCourseCheval?idCheval="+ unCheval.getId()+"'>");
+                                    out.println("<svg class='card-title' width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-flag' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>"
+                                            + "<path fill-rule='evenodd' d='M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z'/>"
+                                            + "</svg>");
+                                    out.println("</td class='align-middle'>");
+                                    
+      out.write("\r\n");
+      out.write("                                    </p></td>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                                <tr>\r\n");
+      out.write("                                <th><h5 class=\"card-title\">Description </h5></th>\r\n");
+      out.write("                            </tr>\r\n");
+      out.write("                            </thead>\r\n");
+      out.write("                            </table>\r\n");
+      out.write("                            <p class=\"card-text\">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>\r\n");
+      out.write("                            <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        \r\n");
       out.write("\r\n");
       out.write("    </div>\r\n");
       out.write("    <!-- Optional JavaScript -->\r\n");

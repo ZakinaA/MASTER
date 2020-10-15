@@ -70,7 +70,7 @@
                 <div class="row no-gutters">
                     <div class="col-md-4">
                     <%
-                        out.println("<img src='../vues/Images/"+ unCheval.getImg_url() +"' alt='...' class='card-img'>");
+                        out.println("<img src='"+ unCheval.getImg_url() +"' alt='...' class='card-img'>");
                     %>
                     </div>
                     <div class="col-md-8">

@@ -92,7 +92,7 @@
                         out.println("</td class='align-middle'>");
                         
                         out.println("<td class='align-middle'> ");
-                        out.println("<img src='../vues/Images/"+ unCheval.getImg_url() +"' width='100' height='100'>");
+                        out.println("<img src='"+ unCheval.getImg_url() +"' width='100' height='100'>");
                         out.println("</td>");
                         
                         out.println("<td class='align-middle'> ");
