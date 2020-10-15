@@ -4,6 +4,7 @@
     Author     : Zakina
 --%>
 
+<%@page import="modele.Participer"%>
 <%@page import="modele.Cheval"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,63 +19,172 @@
 
         
         <title>LISTE DES INFOS DU CHEVAL</title>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <a class="navbar-brand" href="/MASTER">
+                <img src="/vues/Images/black-head-horse-side-view-with-horsehair.png" width="30" height="30" class="d-inline-block align-top"  alt="" loading="lazy">
+                Master
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/MASTER">Accueil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <!-- Item à ajouter
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Items</a>
+                    </li>
+                    -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servlet (dev)
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/MASTER/ServletVentes/listerLesVentes">Lister les ventes</a>
+                            <a class="dropdown-item" href="/MASTER/ServletClient/ajouterClient">Ajouter un client</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/ajouterCheval">Ajouter Cheval</a>
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/listerCheval">Lister les chevaux</a>
+                        </div>
+                    </li>
+                </ul>
+                <a href="/MASTER/login" class="text-dark px-3 text-decoration-none" type="submit">Se connecter</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" type="submit">S'inscrire</a>
+            </div>
+        </nav>
+        <!-- FIN DE LA NAVBAR -->
     </head>
     <body>
         
     <div class="container-lg">
-        
          <%
         Cheval unCheval = (Cheval)request.getAttribute("pIdCheval");
         %>
         <h1>LISTE DES INFOS DU CHEVAL <% out.print("N° " + unCheval.getId()); %> </h1>
-        <table class="table table-hover table-striped shadow-lg p-3 mb-5 bg-white rounded">
-            <thead>
-              <tr>
-                    <th>ID</th>
-                    <th>VENDEUR</th>
-                    <th>RACE</th>
-                    <th>PERE</th>
-                    <th>MERE</th>
-
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
+            <div class="card mb-3" style="max-width: 1110px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
                     <%
-                    
-                        out.println("<tr>");
-                        out.println("<th scope='row'>");
-                        out.println(unCheval.getId());
-                        out.println("</th>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getUnClient().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getLeTypeDeCheval().getLibelle());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getPere().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td> ");
-                        out.println(unCheval.getMere().getNom());
-                        out.println("</td>");
-                        
-                        out.println("<td><a href ='../ServletVentes/listerCourseCheval?idCheval="+ unCheval.getId()+"'>");
-                        out.println("Lister les courses");
-                        out.println("</td>");
-                        
-
-                        
-
-                    
+                        out.println("<img src='../vues/Images/"+ unCheval.getImg_url() +"' alt='...' class='card-img'>");
                     %>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <table class="table table-borderless">
+                            <thead>
+                            <tr>
+                                <th><h5 class="card-title">Nom</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getNom());
+                                   out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                                <th><h5 class="card-title">Sexe</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getSexe());
+                                    out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                            </tr>
+                            <tr>
+                                <th><h5 class="card-title">Prix</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getPrixDepart());
+                                   out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                                <th><h5 class="card-title">Race</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getLeTypeDeCheval().getLibelle());
+                                    out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                            </tr>
+                            <tr>
+                                <th><h5 class="card-title">SIRE</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getSIRE());
+                                   out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                                <th><h5 class="card-title">Vendeur</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                    out.println("<td class='align-middle'> ");
+                                    out.println(unCheval.getUnClient().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                            </tr>
+                            <tr>
+                                <th><h5 class="card-title">Père</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                    if (unCheval.getPere().getId() != 5) {
+                                    out.println("<td class='align-middle'> <a href ='../ServletVentes/listerInfosCheval?idCheval="+ unCheval.getPere().getId()+"'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }else{
+                                    out.println("<td class='align-middle'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }
+                                    %>
+                                    </p></td>
+                                <th><h5 class="card-title">Mère</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                    if (unCheval.getMere().getId() != 5) {
+                                    out.println("<td class='align-middle'><a href ='../ServletVentes/listerInfosCheval?idCheval="+ unCheval.getMere().getId()+"'>");
+                                    out.println(unCheval.getMere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }else{
+                                    out.println("<td class='align-middle'>");
+                                    out.println(unCheval.getPere().getNom());
+                                    out.println("</td class='align-middle'>");
+                                    }
+                                    %>
+                                    </p></td>
+                            </tr>
+                            <tr>
+                                <th><h5 class="card-title">Entraineur</h5></th>
+                                <td><p class="card-text">
+                                    <%
+                                   out.println("<td class='align-middle'> ");
+                                   out.println(unCheval.getUnEntraineur().getNom());
+                                   out.println("</td class='align-middle'>");
+                                    %>
+                                    </p></td>
+                                <th><h5 class="card-title">Liste des courses</h5></th>
+                                <td><p class="card-text"></p></td>
+                            </tr>
+                                <tr>
+                                <th><h5 class="card-title">Description </h5></th>
+                            </tr>
+                            </thead>
+                            </table>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
 
     </div>
     <!-- Optional JavaScript -->

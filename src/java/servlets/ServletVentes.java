@@ -89,7 +89,7 @@ public class ServletVentes extends HttpServlet {
         
         // Récup et affichage par date décroissante de toutes les ventes   
           
-        if(url.equals("/EquidaWeb20/ServletVentes/listerLesVentes"))
+        if(url.equals("/MASTER/ServletVentes/listerLesVentes"))
         {  
             ArrayList<Vente> lesVentes = VenteDAO.getLesVentes(connection);
             request.setAttribute("pLesVentes", lesVentes);
@@ -97,7 +97,7 @@ public class ServletVentes extends HttpServlet {
         }
         
         // Récup et affichage des clients interessés par une certaine catégorie de ventes
-        if(url.equals("/EquidaWeb20/ServletVentes/listerLesClients"))
+        if(url.equals("/MASTER/ServletVentes/listerLesClients"))
         {  
            System.out.println("DANS LISTER LES CLIENTS");
             String codeCat = (String)request.getParameter("codeCat");
@@ -109,7 +109,7 @@ public class ServletVentes extends HttpServlet {
         }
         
         // Récup et affichage des mails concernés par une catégorie de vente
-        if(url.equals("/EquidaWeb20/ServletVentes/listerLesCourriels"))
+        if(url.equals("/MASTER/ServletVentes/listerLesCourriels"))
         {  
             
             System.out.println("Dans lister les mails");
@@ -121,7 +121,7 @@ public class ServletVentes extends HttpServlet {
            
         }
         
-        if(url.equals("/EquidaWeb20/ServletVentes/listerLesChevaux"))
+        if(url.equals("/MASTER/ServletVentes/listerLesChevaux"))
         {  
             
             System.out.println("Dans lister les chevaux");
@@ -134,7 +134,7 @@ public class ServletVentes extends HttpServlet {
            
         }
         
-        if(url.equals("/EquidaWeb20/ServletVentes/listerInfosCheval"))
+        if(url.equals("/MASTER/ServletVentes/listerInfosCheval"))
         {  
             
             System.out.println("Dans lister les chevaux");
@@ -148,7 +148,7 @@ public class ServletVentes extends HttpServlet {
            
         } 
         
-        if(url.equals("/EquidaWeb20/ServletVentes/listerCourseCheval"))
+        if(url.equals("/MASTER/ServletVentes/listerCourseCheval"))
         {  
             
             System.out.println("Dans lister les courses");

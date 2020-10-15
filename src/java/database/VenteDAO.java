@@ -11,6 +11,7 @@ import modele.Cheval;
 import modele.Client;
 import modele.Courriel;
 import modele.Course;
+import modele.Entraineur;
 import modele.Lieu;
 import modele.Participer;
 import modele.Pays;
@@ -163,7 +164,7 @@ public class VenteDAO {
         try
         {
              
-            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, client.nom as nomVendeur, typecheval.libelle as Race, lot.prixDepart as prixDep, cheval.id_mere as mere, cheval.id_pere as pere, client.nom as nomDuVendeur FROM cheval, lot, vente, typecheval, client WHERE cheval.id = lot.id_cheval AND cheval.id_client = client.id AND cheval.id_typeCheval = typecheval.id AND lot.id_vente = vente.id AND vente.id = ?");
+            requete=connection.prepareStatement("SELECT cheval.id cheval.nom client.nom as nomVendeur, typecheval.libelle as Race, lot.prixDepart as prixDep, cheval.id_mere as mere, cheval.id_pere as pere, client.nom as nomDuVendeur FROM cheval, lot, vente, typecheval, client WHERE cheval.id = lot.id_cheval AND cheval.id_client = client.id AND cheval.id_typeCheval = typecheval.id AND lot.id_vente = vente.id AND vente.id = ?");
             requete.setString(1, idVente);
             
             System.out.println("requete" + requete);
@@ -205,7 +206,7 @@ public class VenteDAO {
         try
         {
               unCheval = new Cheval();
-            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur FROM client, cheval, typecheval, cheval chevalPere, cheval chevalMere WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id AND cheval.id_client = client.id AND cheval.id = ?");
+            requete=connection.prepareStatement("SELECT cheval.id, cheval.nom, cheval.sexe, cheval.prixDepart, cheval.SIRE, cheval.img_url as img, typecheval.libelle as Race, chevalPere.nom as pere, chevalMere.nom as mere, client.nom as nomVendeur, chevalPere.id as idpere, chevalMere.id as idmere, entraineur.nom as nomEntraineur FROM client, cheval, typecheval, cheval chevalPere, cheval chevalMere, entraineur WHERE cheval.id_typeCheval = typecheval.id AND cheval.id_pere = chevalPere.id AND cheval.id_mere = chevalMere.id AND cheval.id_client = client.id AND cheval.id = ?");
             requete.setInt(1, Integer.parseInt(idCheval));
             
             System.out.println("requete" + requete);
@@ -214,13 +215,19 @@ public class VenteDAO {
                 while ( rs.next() ) {
                 //System.out.println("Cheval/1: " + unCheval.getId());
                 
-                
                 unCheval.setId(rs.getInt("id"));
+                unCheval.setNom(rs.getString("nom"));
+                unCheval.setSexe(rs.getString("sexe"));
+                unCheval.setPrixDepart(rs.getInt("prixDepart"));
+                unCheval.setSIRE(rs.getString("SIRE"));
+                unCheval.setImg_url(rs.getString("img"));
                
                 Cheval unChevalPere = new Cheval();
+                unChevalPere.setId(rs.getInt("idpere"));
                 unChevalPere.setNom(rs.getString("pere"));
                 
                 Cheval unChevalMere = new Cheval();
+                unChevalMere.setId(rs.getInt("idmere"));
                 unChevalMere.setNom(rs.getString("mere"));
                 
                 
@@ -230,12 +237,16 @@ public class VenteDAO {
                 TypeCheval unTypeCheval = new TypeCheval();
                 unTypeCheval.setLibelle(rs.getString("Race"));
                 
+                Entraineur unEntraineur = new Entraineur();
+                unEntraineur.setNom(rs.getString("nomEntraineur"));
+                
                 
                 unCheval.setLeTypeDeCheval(unTypeCheval);
                 unCheval.setUnClient(unClient);
                 
                 unCheval.setPere(unChevalPere);
                 unCheval.setMere(unChevalMere);
+                unCheval.setUnEntraineur(unEntraineur);
                 
                 
                 }

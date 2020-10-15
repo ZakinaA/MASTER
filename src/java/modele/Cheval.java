@@ -21,6 +21,7 @@ public class Cheval {
     private Cheval pere;
     private ArrayList<Lot> lesLots;
     private ArrayList<Participer> lesParticipations;
+    private Entraineur unEntraineur;
 
     public Cheval(){
     }
@@ -125,6 +126,14 @@ public class Cheval {
 
     public void setPere(Cheval pere) {
         this.pere = pere;
+    }
+
+    public Entraineur getUnEntraineur() {
+        return unEntraineur;
+    }
+
+    public void setUnEntraineur(Entraineur unEntraineur) {
+        this.unEntraineur = unEntraineur;
     }
 
     public ArrayList<Lot> getLesLots() {

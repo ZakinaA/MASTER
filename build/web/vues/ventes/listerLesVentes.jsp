@@ -18,12 +18,10 @@
 
 
         <title>LISTE DES VENTES</title>
-    </head>
-    <body>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/MASTER">
                 <img src="../Images/black-head-horse-side-view-with-horsehair.png" width="30" height="30" class="d-inline-block align-top"  alt="" loading="lazy">
                 Master
             </a>
@@ -34,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <!-- Item à ajouter
                     <li class="nav-item">
@@ -43,23 +41,25 @@
                     -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Outils
+                            Servlet (dev)
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletVentes/listerLesVentes">Lister les ventes</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletClient/ajouterClient">Ajouter un client</a>
+                            <a class="dropdown-item" href="/MASTER/ServletVentes/listerLesVentes">Lister les ventes</a>
+                            <a class="dropdown-item" href="/MASTER/ServletClient/ajouterClient">Ajouter un client</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
-
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/ajouterCheval">Ajouter Cheval</a>
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/listerCheval">Lister les chevaux</a>
                         </div>
                     </li>
                 </ul>
-                <a href="<%=request.getContextPath()%>/_deconnexion" class="text-dark px-3 text-decoration-none" type="submit">Se deconnecter</a>
+                <a href="/MASTER/login" class="text-dark px-3 text-decoration-none" type="submit">Se connecter</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" type="submit">S'inscrire</a>
             </div>
         </nav>
-
-        <div class="container-lg">
+        <!-- FIN DE LA NAVBAR -->
+    </head>
+    <body>
+     <div class="container-lg">
             <h1>LISTE DES VENTES</h1>
             <%
                 ArrayList<Vente> lesVentes = (ArrayList) request.getAttribute("pLesVentes");
