@@ -5,31 +5,22 @@
  */
 package servlets;
 
-import database.ChevalDAO;
-import database.ClientDAO;
-import database.TypeDeChevalDAO;
 import database.UserDAO;
-import database.VenteDAO;
 import formulaires.LoginForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.Cheval;
-import modele.Client;
-import modele.TypeCheval;
 import modele.Utilisateur;
-import modele.Vente;
 
 /**
- *
- * @author sio2
+ * 
+ * @author DUBOSQ
  */
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {

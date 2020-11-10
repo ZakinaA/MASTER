@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Acheteur
+    Created on : 27 oct. 2020, 02:31:49
+    Author     : noedu
+--%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modele.CategVente"%>
@@ -32,24 +37,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Item à ajouter
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Items</a>
-                    </li>
-                    -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Outils
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletVentes/listerLesVentes">Lister les ventes</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletClient/ajouterClient">Ajouter un client</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
-                            
-                        </div>
-                    </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
                 <a href="<%=request.getContextPath()%>/_deconnexion" class="text-danger px-3 text-decoration-none" type="submit">Se deconnecter</a>
@@ -74,7 +61,7 @@
                 out.println("<div class='card border-dark mb-5' id='wprock-img-zoom' style='max-width: 30rem;'>");
                 out.println("<img class='card-img-top' id='images' src='../vues/Images/"+ uneCategVente.getImg_url() +"' alt='image de la categ' style='max-height : 270px;'>");
                 out.println("<div class='card-body text-dark'>");
-                out.println("<h5 class='card-title'>"+ uneCategVente.getLibelle() +" <span class='badge badge-success float-right'>" + uneCategVente.getNbVente() + " en cours</span></h5>");
+                out.println("<h5 class='card-title'>"+ uneCategVente.getLibelle() +"<span class='badge badge-success float-right'>" + uneCategVente.getNbVente() + " en cours</span> <span class='spinner-grow spinner-grow-sm text-success float-right mt-1 mr-1' role='status'></span></h5>");
                 //out.println("<p></p>");
                 out.println("</div>");
                 out.println("</div>");
@@ -86,6 +73,7 @@
             </div>
         </div>
         <!-- Optional JavaScript -->
+        <!-- Style pour le petit zoom sur les images -->
         <style>
 
              #wprock-img-zoom-hover #wprock-img-zoom {
@@ -108,13 +96,7 @@
         </style>
 
         <!-- Optional JavaScript -->
-        <script type="text/javascript">
-            var myVar=setInterval(function () {myTimer()}, 1000);
-            var counter = 0;
-            function myTimer() {
-                document.getElementById("demo").innerHTML = new Date().toISOString().substr(11, 8);;
-            }
-        </script>
+        
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

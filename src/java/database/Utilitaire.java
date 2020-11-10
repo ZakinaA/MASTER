@@ -11,8 +11,9 @@ import java.sql.Statement;
 
 /**
  *
- * @author Zakina
+ * @author Dubosq
  */
+
 public class Utilitaire {
   
 /***********************************************************

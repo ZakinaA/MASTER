@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/admin/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/vendeur/Vendeur.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/connexion/login.jsp</file>
@@ -25,6 +26,18 @@
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/index.html</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/employee/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/acheteur/listerLesLots.jsp</file>
+=======
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/database/LotDAO.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/formulaires/LoginForm.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/database/VenteDAO.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/vues/admin/listerLesVentesParCateg.jsp</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/vues/acheteur/ficheCheval.jsp</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/formulaires/ClientForm.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/modele/Enchere.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/web/vues/connexion/login.jsp</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/servlets/ServletAcheteur.java</file>
+            <file>file:/C:/Users/noedu/OneDrive/Documents/NetBeansProjects/MASTER/src/java/formulaires/EnchereForm.java</file>
+>>>>>>> 9696ba1dd83a8788b85199a6c1dc01f633ffd461
         </group>
     </open-files>
 </project-private>

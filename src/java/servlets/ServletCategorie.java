@@ -16,7 +16,7 @@ import modele.CategVente;
 
 
 /**
- * update 01/10/2020
+ * 
  * @author DUBOSQ
  */
 @WebServlet(name = "ServletCategorie", urlPatterns = {"/ServletCategorie"})

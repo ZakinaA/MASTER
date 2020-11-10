@@ -1,10 +1,15 @@
 package modele;
 
-import database.VenteDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 /**
- * update 01/10/2020
+ * 
  * @author DUBOSQ
  */
 public class Vente {
@@ -17,6 +22,7 @@ public class Vente {
     private ArrayList<TypeCheval> lesTypesDeChevaux;
     private Vente uneVente;
     private int NbCourriels;
+    private String heureVente;
 
     public Vente() {
     }
@@ -71,7 +77,7 @@ public class Vente {
     public ArrayList<Courriel> getLesCourriels() {
 	return lesCourriels;
     }
-
+    
     public void setLesCourriels(ArrayList<Courriel> lesCourriels) {
 	this.lesCourriels = lesCourriels;
     }
@@ -111,5 +117,52 @@ public class Vente {
        NbCourriels = lesCourriels.size();
         return NbCourriels;
     }
+
+    public int getNbCourriels() {
+        return NbCourriels;
+    }
+
+    public void setNbCourriels(int NbCourriels) {
+        this.NbCourriels = NbCourriels;
+    }
+
+    public String getHeureVente() {
+        return heureVente;
+    }
+
+    public void setHeureVente(String heureVente) {
+        this.heureVente = heureVente;
+    }
     
+    public String getTempsRestant (String date) throws ParseException{
+        
+        //final String gameDate = "2020-11-09 19:45:00";
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRENCH);
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        final Date dateOfGame = format.parse(date);
+        final long millis = dateOfGame.getTime() - System.currentTimeMillis();
+        System.out.println(dateOfGame.getTime() - System.currentTimeMillis());
+        
+        long heuresSec = TimeUnit.MILLISECONDS.toHours(millis) * 3600;
+        long minutesSec = (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))) * 60;
+        long secondes = (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+        long hmsSec = heuresSec + minutesSec + secondes;
+        
+        if (hmsSec < 0){
+            return "0";
+        }
+        else{
+            String secondeRestantes = Long.toString(hmsSec);
+            return secondeRestantes;
+        }
+        
+//        System.out.println("Heures:" + TimeUnit.MILLISECONDS.toHours(millis));
+//        System.out.println("Minutes:" + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))));
+//        System.out.println("Secondes:" + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
+//        
+//        final String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
+//                TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+//                TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+
+    }
 }

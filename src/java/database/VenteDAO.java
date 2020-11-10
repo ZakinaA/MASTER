@@ -3,7 +3,6 @@ package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modele.CategVente;
@@ -18,9 +17,10 @@ import modele.TypeCheval;
 import modele.Vente;
 
 /**
- * update 01/10/2020
- * @author DUBOSQ
+ *
+ * @author Dubosq
  */
+
 public class VenteDAO {
 
 
@@ -84,6 +84,7 @@ public class VenteDAO {
                 uneVente.setId(rs.getInt("id"));
                 uneVente.setNom(rs.getString("nom"));
                 uneVente.setDateDebutVente(rs.getString("dateDebut"));
+                uneVente.setHeureVente(rs.getString("dateFinVente")); 
                 
                 CategVente uneCateg = new CategVente();
                 uneCateg.setCode(rs.getString("code"));
@@ -320,6 +321,34 @@ public class VenteDAO {
             e.printStackTrace();
         }
         return lesParticipations;
+        
+    }
+    
+        public static Vente getUneVente(Connection connection, String idVente){      
+        
+        Vente uneVente = null;
+        try
+        {
+              uneVente = new Vente();
+            requete=connection.prepareStatement("SELECT * from vente where vente.id = ?");
+            requete.setInt(1, Integer.parseInt(idVente));
+            
+            System.out.println("requete" + requete);
+            rs=requete.executeQuery();
+             
+                while ( rs.next() ) {
+                //System.out.println("Cheval/1: " + unCheval.getId());
+                
+                
+                uneVente.setId(rs.getInt("id"));
+                uneVente.setHeureVente(rs.getString("dateFinVente"));     
+                }
+        }   
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return uneVente;
         
     }
 

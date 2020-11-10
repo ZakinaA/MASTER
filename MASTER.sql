@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 02 nov. 2020 à 15:46
+-- Généré le : Dim 08 nov. 2020 à 17:23
 -- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -236,6 +236,30 @@ INSERT INTO `course` (`id`, `libelle`, `dateCourse`, `position`, `ville`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `enchere`
+--
+
+DROP TABLE IF EXISTS `enchere`;
+CREATE TABLE IF NOT EXISTS `enchere` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `montant` int(11) DEFAULT NULL,
+  `id_lot` int(11) DEFAULT NULL,
+  `dateEnchere` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK_ENCHERE_LOT` (`id_lot`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `enchere`
+--
+
+INSERT INTO `enchere` (`id`, `montant`, `id_lot`, `dateEnchere`) VALUES
+(1, 1000, 1, '2020-11-08 17:53:38'),
+(2, 1000, 7, '2020-11-08 18:21:40');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `entraineur`
 --
 
@@ -302,15 +326,10 @@ CREATE TABLE IF NOT EXISTS `lot` (
 INSERT INTO `lot` (`id`, `prixDepart`, `id_cheval`, `id_vente`) VALUES
 (1, 50, 4, 210717),
 (2, 20, 1, 210717),
-(3, 100, 8, 250219),
 (4, 200, 1, 250219),
 (5, 100, 3, 250219),
 (6, 200, 7, 250219),
 (7, 100, 3, 250219),
-(8, 124, 8, 250219),
-(9, 100, 3, 250219),
-(10, 124, 8, 250219),
-(11, 100, 3, 250219),
 (12, 124, 8, 250219),
 (13, 205, 7, 250219);
 
@@ -457,21 +476,19 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `password` varchar(20) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL,
-  `id_client` int(11) NOT NULL,
+  `id_client` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_ROLEUSER` (`id_role`),
   KEY `FK_CLIUSER` (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `username`, `password`, `email`, `id_role`, `id_client`) VALUES
-(1, 'Noe', 'mpnoe', 'noe', 1, 1),
-(2, 'pablo', 'mppablo', 'pablo@gmail.com', 2, 17),
-(3, 'melvyn', 'mpmelvin', 'melvyn@mail.com', 3, 2),
-(4, 'marco', 'mpmarco', 'marco214251@gmail.com', 4, 10);
+(6, 'Noe', 'mpnoenoe', 'noe.dubosq.allende@gmail.com', 1, NULL),
+(7, 'Melvyn', 'mpmelvin', 'melvyb@gmail.com', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -483,28 +500,31 @@ DROP TABLE IF EXISTS `vente`;
 CREATE TABLE IF NOT EXISTS `vente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(40) CHARACTER SET latin1 NOT NULL,
-  `dateDebut` date NOT NULL,
+  `dateDebut` datetime NOT NULL,
+  `dateFinVente` datetime DEFAULT NULL,
+  `heureVente` time DEFAULT '24:00:00',
   `codeCategVente` varchar(5) CHARACTER SET latin1 NOT NULL,
   `id_lieu` int(11) DEFAULT NULL,
   `isActive` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `codeCategVente` (`codeCategVente`),
   KEY `index_lieu` (`id_lieu`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=250221 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=250222 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `vente`
 --
 
-INSERT INTO `vente` (`id`, `nom`, `dateDebut`, `codeCategVente`, `id_lieu`, `isActive`) VALUES
-(30917, 'Garibaldi Princess', '2017-03-09', 'ELVG', 1, 1),
-(90217, 'Mixing brain', '2017-09-02', 'XFEV', 2, 1),
-(210717, 'Rapsberry Sailing', '2017-07-17', 'ETE', 1, 1),
-(210817, 'Jelly Bay', '2017-08-17', 'ETE', 1, 1),
-(250217, 'Djezair Star', '2017-02-25', 'XFEV', 2, 1),
-(250218, 'Vente', '2020-10-15', 'XFEV', 2, 1),
-(250219, 'Vente de chiens', '2020-10-28', 'AUT', 1, 1),
-(250220, 'Vente de boules de neiges ', '2020-10-14', 'AUT', 1, 0);
+INSERT INTO `vente` (`id`, `nom`, `dateDebut`, `dateFinVente`, `heureVente`, `codeCategVente`, `id_lieu`, `isActive`) VALUES
+(30917, 'Garibaldi Princess', '2017-03-09 18:37:17', '2020-11-19 14:17:51', NULL, 'ELVG', 1, 1),
+(90217, 'Mixing brain', '2017-09-02 07:13:07', '2020-11-20 14:17:55', NULL, 'XFEV', 2, 1),
+(210717, 'Rapsberry Sailing', '2017-07-17 00:00:00', '2020-11-20 14:17:58', NULL, 'ETE', 1, 1),
+(210817, 'Jelly Bay', '2017-08-17 00:00:00', '2020-11-14 14:17:59', NULL, 'ETE', 1, 1),
+(250217, 'Djezair Star', '2017-02-25 00:00:00', '2020-11-28 14:18:01', NULL, 'XFEV', 2, 1),
+(250218, 'Vente', '2020-11-07 18:41:02', '2020-11-07 13:49:15', NULL, 'XFEV', 2, 1),
+(250219, 'Vente de chiens', '2020-10-28 00:00:00', '2020-11-08 14:57:48', '18:54:41', 'AUT', 1, 1),
+(250220, 'Vente de boules de neiges ', '2020-10-14 00:00:00', '2020-11-26 14:18:06', NULL, 'AUT', 1, 0),
+(250221, 'testVente', '2020-11-20 19:31:57', '2020-11-19 14:18:08', '23:00:00', 'AUT', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -561,6 +581,12 @@ ALTER TABLE `clientcategvente`
 ALTER TABLE `contenir`
   ADD CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_mail`) REFERENCES `mail` (`id`),
   ADD CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_pj`) REFERENCES `piecesjointes` (`id`);
+
+--
+-- Contraintes pour la table `enchere`
+--
+ALTER TABLE `enchere`
+  ADD CONSTRAINT `FK_ENCHERE_LOT` FOREIGN KEY (`id_lot`) REFERENCES `lot` (`id`);
 
 --
 -- Contraintes pour la table `lot`

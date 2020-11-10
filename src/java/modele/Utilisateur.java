@@ -6,8 +6,8 @@
 package modele;
 
 /**
- *
- * @author sio2
+ * 
+ * @author DUBOSQ
  */
 public class Utilisateur {
     private int id;
@@ -15,6 +15,7 @@ public class Utilisateur {
     private String email;
     private String password;
     private Role role;
+    private int id_client;
 
     public int getId() {
         return id;
@@ -55,5 +56,12 @@ public class Utilisateur {
     public void setRole(Role role) {
         this.role = role;
     } 
-    
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
+
+    public int getId_client() {
+        return id_client;
+    }
 }

@@ -1,6 +1,5 @@
 package database;
 
-import static database.PaysDAO.requete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,9 +9,10 @@ import modele.Client;
 import modele.Pays;
 
 /**
- * update 01/10/2020
- * @author DUBOSQ
+ *
+ * @author Dubosq
  */
+
 public class ClientDAO {
     
     Connection connection=null;

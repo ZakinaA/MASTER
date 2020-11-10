@@ -6,8 +6,6 @@
 package servlets;
 
 import database.CategVenteDAO;
-import database.ChevalDAO;
-import database.UserDAO;
 import database.VenteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;

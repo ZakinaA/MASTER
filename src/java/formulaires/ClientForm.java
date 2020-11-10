@@ -5,7 +5,6 @@
  */
 package formulaires;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +13,8 @@ import modele.Client;
 import modele.Pays;
 
 /**
- *
- * @author Zakina
+ * 
+ * @author DUBOSQ
  */
 public class ClientForm {
     

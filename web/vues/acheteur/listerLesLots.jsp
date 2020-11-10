@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listerLesLots / Acheteur /
-    Created on : 27 oct. 2020, 04:33:13
+    Document   : listerLesLots
+    Created on : 27 oct. 2020, 04:47:28
     Author     : noedu
 --%>
 
@@ -38,24 +38,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Item à ajouter
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Items</a>
-                    </li>
-                    -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Outils
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletVentes/listerLesVentes">Lister les ventes</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletClient/ajouterClient">Ajouter un client</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
-                            
-                        </div>
-                    </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
                 <a href="<%=request.getContextPath()%>/_deconnexion" class="text-danger px-3 text-decoration-none" type="submit">Se deconnecter</a>
@@ -70,7 +52,9 @@
                 </div>
             </div> 
         
-        <%ArrayList<Cheval> lesChevaux = (ArrayList) request.getAttribute("pLesChevaux");%>
+        <%ArrayList<Cheval> lesChevaux = (ArrayList) request.getAttribute("pLesChevaux");
+        String idVente = (String)request.getAttribute("pIdVente");
+        %>
         
         <div class="container">
             <div class="row row-cols-md-1">
@@ -85,17 +69,21 @@
                 out.println("    <h5 class='card-title'>"+ unCheval.getNom() +"</h5>");
                 out.println("    <p class='card-text'> Vendeur: "+ unCheval.getUnClient().getNom() +"</p>");
                 out.println("    <p class='card-text'> Race: "+ unCheval.getLeTypeDeCheval().getLibelle() +"</p>");
-                out.println("    <a href='/EquidaWeb20/acheteur/ficheCheval?idCheval="+ unCheval.getId() +"' class='btn btn-primary'>Plus d'informations</a>");
+                out.println("    <a href='/EquidaWeb20/acheteur/ficheCheval?idCheval="+ unCheval.getId() +"&idVente="+ idVente +"' class='btn btn-primary'>Plus d'informations</a>");
                 out.println("   </div>");
                 out.println("</div>");
                 out.println("</div>");
-                             
-                
-
             }
+            
             %>
             </div>
             </div>
+            <% 
+                if(lesChevaux.size() == 0){
+                    out.println("<center><h1 class='display-4'>Nous sommes désolés, il n'y pas de chevaux en vente ici pour le moment...</h1></center>");
+                }
+            
+            %>
         </div>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,15 +1,13 @@
 package formulaires;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import modele.CategVente;
-import modele.Client;
-import modele.Pays;
+
 
 /**
- * update 01/10/2020
+ * 
  * @author DUBOSQ
  */
 public class CategVenteForm {

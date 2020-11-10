@@ -11,9 +11,7 @@ import database.ClientDAO;
 import database.PaysDAO;
 import database.TypeDeChevalDAO;
 import database.Utilitaire;
-import database.VenteDAO;
 import formulaires.ChevalForm;
-import formulaires.ClientForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -28,10 +26,9 @@ import modele.Cheval;
 import modele.Client;
 import modele.Pays;
 import modele.TypeCheval;
-import modele.Vente;
 /**
- *
- * @author sio2
+ * 
+ * @author DUBOSQ
  */
 
 public class ServletCheval extends HttpServlet {

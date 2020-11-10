@@ -5,20 +5,17 @@
  */
 package database;
 
-import static database.ClientDAO.requete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modele.CategVente;
-import modele.Client;
-import modele.Lot;
-import modele.Vente;
 /**
- * update 01/10/2020
- * @author DUBOSQ
+ *
+ * @author Dubosq
  */
+
 public class CategVenteDAO {
     
     Connection connection=null;

@@ -5,10 +5,13 @@
  */
 package tests;
 
-import modele.CategVente;
-import modele.Client;
-import modele.Pays;
-import modele.Vente;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  *
@@ -16,35 +19,22 @@ import modele.Vente;
  */
 public class ClientTest {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
-        Client unClient = new Client(1, "dupont", "luc");
-        unClient.setUnPays(new Pays("FRA", "FRANCE"));    
-        System.out.println(unClient.toString());
-        System.out.println(unClient.getNom() + "  " + unClient.getUnPays().getNom());
-        
-        CategVente uneCategVente = new CategVente("ETTFR", "ETE");
-        CategVente uneCategVente2 = new CategVente("ETTFR1", "ETE");
-        CategVente uneCategVente3 = new CategVente("ETTFR2", "ETE");
-        
-        Vente uneVente1 = new Vente(1, "Vente d'été", "2019");
-        Vente uneVente2 = new Vente(2, "Vente d'été2", "2019");
-        Vente uneVente3 = new Vente(3, "Vente d'été3", "2012");
-        Vente uneVente4 = new Vente(4, "Vente d'hiver", "2018");
-        
-        uneCategVente.addUneVente(uneVente1);
-        uneCategVente.addUneVente(uneVente2);
-        uneCategVente.addUneVente(uneVente3);
-        uneCategVente.addUneVente(uneVente4);
-        
-        unClient.addUneCategVente(uneCategVente);
-        unClient.addUneCategVente(uneCategVente2);
-        
-        //System.out.println("Nb categ: " + unClient.getNbCateg());
-        System.out.println("Nb de vente en 2019" + unClient.getNbVentes("2019"));
-        
-        
-        
+           
+            final String gameDate = "2020-11-09 19:45:00";
+            final SimpleDateFormat apiFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRENCH);
+            apiFormat.setTimeZone(TimeZone.getTimeZone("UTC+1"));
+            final Date dateOfGame = apiFormat.parse(gameDate);
+            final long millis = dateOfGame.getTime() - System.currentTimeMillis();
+            System.out.println(dateOfGame.getTime() - System.currentTimeMillis());
+
+            final String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
+                            TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+                            TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+            System.out.println(hms);
+            
+            
     }
     
 }

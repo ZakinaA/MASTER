@@ -3,7 +3,7 @@ package modele;
 import java.util.ArrayList;
 
 /**
- * update 01/10/2020
+ * 
  * @author DUBOSQ
  */
 public class TypeCheval {

@@ -8,14 +8,14 @@ package formulaires;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import modele.Role;
-import modele.Utilisateur;
+import modele.Enchere;
+import modele.Lot;
 
 /**
- * 
- * @author DUBOSQ
+ *
+ * @author noedu
  */
-public class LoginForm {
+public class EnchereForm {
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
@@ -31,14 +31,9 @@ public class LoginForm {
         return erreurs;
     }
 
-//    public void setErreurs(Map<String, String> erreurs) {
-//        this.erreurs = erreurs;
-//    }
-//
-//
-//    private void setErreur(String champ, String message) {
-//    erreurs.put(champ, message);
-//    }    
+    public void setErreurs(Map<String, String> erreurs) {
+        this.erreurs = erreurs;
+    }
     
     private static String getDataForm( HttpServletRequest request, String nomChamp ) {
         String valeur = request.getParameter( nomChamp );
@@ -49,23 +44,20 @@ public class LoginForm {
         }   
     }
     
-    public Utilisateur ajouterUtilisateur(HttpServletRequest request) {
+    
+    public Enchere ajouterEnchere(HttpServletRequest request) {
       
-        Utilisateur unUtilisateur = new Utilisateur();
-
-        String email = getDataForm(request, "mail");
-        String username = getDataForm(request, "user");
-        String password = getDataForm(request, "password");
-        int role = Integer.parseInt(getDataForm(request, "role"));
-         
+        Enchere uneEnchere  = new Enchere();
+        int montant = Integer.parseInt(getDataForm(request, "montant"));
       
-        unUtilisateur.setEmail(email);
-        unUtilisateur.setUsername(username);
-        unUtilisateur.setPassword(password);
-        unUtilisateur.setRole(new Role(role));
-
+        Lot unLot = new Lot();
+        int id_lot = Integer.parseInt(getDataForm(request, "idLot"));
+        unLot.setId(id_lot);
+        
+        uneEnchere.setMontant(montant);
+        uneEnchere.setLot(unLot);
+               
        
-        return unUtilisateur;
+        return uneEnchere;
     }
-
 }

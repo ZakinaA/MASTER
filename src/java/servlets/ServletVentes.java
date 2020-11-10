@@ -8,7 +8,6 @@ package servlets;
 import database.Utilitaire;
 import database.VenteDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.servlet.ServletContext;
@@ -21,7 +20,6 @@ import modele.Client;
 import modele.Courriel;
 import modele.Participer;
 import modele.Vente;
-import org.omg.CORBA.SystemException;
 
 /**
  *

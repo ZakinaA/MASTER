@@ -1,9 +1,20 @@
 <%-- 
-    Document   : listerLesLots
+    Document   : ficheCheval
     Created on : 27 oct. 2020, 04:33:13
     Author     : noedu
 --%>
 
+<%@page import="modele.Enchere"%>
+<%@page import="modele.Lot"%>
+<%@page import="java.util.concurrent.TimeUnit"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.Clock"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="modele.Vente"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="modele.Cheval"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -38,24 +49,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Item à ajouter
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Items</a>
-                    </li>
-                    -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Outils
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletVentes/listerLesVentes">Lister les ventes</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletClient/ajouterClient">Ajouter un client</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
-
-                        </div>
-                    </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
                 <a href="<%=request.getContextPath()%>/_deconnexion" class="text-danger px-3 text-decoration-none" type="submit">Se deconnecter</a>
@@ -75,8 +68,12 @@
         <div class="container-lg">
             <%
                 Cheval unCheval = (Cheval) request.getAttribute("pIdCheval");
+                Vente uneVente = (Vente) request.getAttribute("pIdVente");
+                Lot unLot = (Lot) request.getAttribute("pIdLot");
+                Enchere uneEnchere = (Enchere) request.getAttribute("pMontantEnchere");
+            
             %>
-            <form action="<============================================================>">
+            <form action="<%=request.getContextPath()%>/acheteur/encherir" method="post">
             <div class="card mb-3" style="max-width: 1110px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
@@ -88,7 +85,7 @@
                         <div class="card-body">
                             <table class="table table-borderless">
                                 <thead>
-                                    <span class='badge badge-danger float-right'> Prix actuel : <% %> €</span> 
+                                    <span class='badge badge-danger float-right'> Prix actuel : <% out.println(uneEnchere.getMontant()); %> €</span> 
                                     <tr>
                                         <th><h5 class="card-title">Nom</h5></th>
                                         <td><p class="card-text">
@@ -107,7 +104,7 @@
                                         <th><h5 class="card-title">Prix de départ</h5></th>
                                         <td><p class="card-text">
                                                 <%
-                                                    out.println("<td class='align-middle'>"+ unCheval.getPrixDepart() +"</td>");
+                                                    out.println("<td class='align-middle'>"+ unLot.getPrixDepart() +"€</td>");
                                                 %>
                                             </p></td>
                                         <th><h5 class="card-title">Race</h5></th>
@@ -176,17 +173,27 @@
                                 </thead>
                             </table>
                            <div class="row">
-                               <div class="col-sm-4"><div class="input-group mb-3">
+                               <div class="col-sm-4">
+                                   <div class="input-group mb-3">
                                        <div class="input-group-prepend">
-                                           <button class="btn btn-outline-success" type="submit" id="encherir" >Enchérir</button>
-                                       </div>
-                                       <input type="text" class="form-control" placeholder="Montant" required>
+                                           <% 
+                                               if(uneVente.getTempsRestant(uneVente.getHeureVente()).equals("0")){
+                                                   System.out.println("Plus de temps vente !");
+                                                   out.println("</div>");
+                                               } 
+                                               else {
+                                                   out.println("<button class='btn btn-outline-success' type='submit' id='encherir' >Enchérir</button>");
+                                                   out.println("</div>");
+                                                   out.println("<input name='montant' type='text' maxlength='6' class='form-control' placeholder='Montant' required>");
+                                               }
+                                           %>
+                                       <input name = "idLot" type="hidden" value="<% out.println(unLot.getId()); %>">
                                    </div>
                                </div>
-                               <div class="col-sm-7"></div>
-                                <div class="col-sm-1">
+                               <div class="col-sm-1"></div>
+                                <div class="col-sm-7">
                                     <div class="alert alert-warning float-right" role="alert">
-                                        <h5>24h00</h5>
+                                        <h5 id="countdown"></h5>
                                     </div>
                                 </div>
                             </div>
@@ -195,9 +202,36 @@
                 </div>
             </div>
         </form>
-
+                          
     </div>
     <!-- Optional JavaScript -->
+    
+    <!-- Script pour concatenner le temps en secondes, puis le remettre en J/H/M/S -->
+    <% System.out.println("Restant:" + uneVente.getTempsRestant(uneVente.getHeureVente())); %>
+        <script>
+        var upgradeTime = <% out.println(uneVente.getTempsRestant(uneVente.getHeureVente())); %>
+        var seconds = upgradeTime;
+        function timer() {
+          var days        = Math.floor(seconds/24/60/60);
+          var hoursLeft   = Math.floor((seconds) - (days*86400));
+          var hours       = Math.floor(hoursLeft/3600);
+          var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
+          var minutes     = Math.floor(minutesLeft/60);
+          var remainingSeconds = seconds % 60;
+          function pad(n) {
+            return (n < 10 ? "0" + n : n);
+          }
+          
+            document.getElementById('countdown').innerHTML = pad(days) + ":" + pad(hours) + ":" + pad(minutes) + ":" + pad(remainingSeconds);
+              seconds--;
+          }
+        if (seconds > 0){
+            var countdownTimer = setInterval('timer()', 1000);
+        }
+        else{
+            document.getElementById('countdown').innerHTML = "Cette vente est terminée !";
+        }
+        </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
