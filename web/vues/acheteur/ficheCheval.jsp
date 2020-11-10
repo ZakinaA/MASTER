@@ -3,21 +3,16 @@
     Created on : 27 oct. 2020, 04:33:13
     Author     : noedu
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
+<%@page import="java.time.*"%>
 <%@page import="modele.Enchere"%>
 <%@page import="modele.Lot"%>
-<%@page import="java.util.concurrent.TimeUnit"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="java.time.Clock"%>
-<%@page import="java.time.LocalDateTime"%>
 <%@page import="modele.Vente"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.time.LocalTime"%>
-<%@page import="java.time.LocalDate"%>
 <%@page import="modele.Cheval"%>
-<%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -47,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>

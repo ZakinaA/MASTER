@@ -25,7 +25,7 @@
   </head>
 
   <body class="text-center">
-      <form class="form-signin" action="/EquidaWeb20/connexion" method="post">
+      <form class="form-signin" action="/MASTER/connexion" method="post">
         <div class="container col-3" style="transform: translateY(50%);">
             <img class="mb-4" src="vues/Images/black-head-horse-side-view-with-horsehair.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Bienvenue</h1>

@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/admin/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER/admin/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <!-- Item à ajouter
                     <li class="nav-item">
@@ -42,11 +42,11 @@
                             Outils
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletVentes/listerLesVentes">Lister les ventes</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletClient/ajouterClient">Ajouter un client</a>
+                            <a class="dropdown-item" href="/MASTER/ServletVentes/listerLesVentes">Lister les ventes</a>
+                            <a class="dropdown-item" href="/MASTER/ServletClient/ajouterClient">Ajouter un client</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
-                            <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/ajouterCheval">Ajouter Cheval</a>
+                            <a class="dropdown-item" href="/MASTER/ServletCheval/listerCheval">Lister les chevaux</a>
                             
                         </div>
                     </li>
@@ -71,7 +71,7 @@
                 CategVente uneCategVente = lesCategVentes.get(i);
                 
                 out.println("<div class='col mb-4' id='wprock-img-zoom-hover'>");
-                out.println("<a href ='/EquidaWeb20/admin/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
+                out.println("<a href ='/MASTER/admin/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
                 out.println("<div class='card border-dark mb-5' id='wprock-img-zoom' style='max-width: 30rem;'>");
                 out.println("<img class='card-img-top' id='images' src='../vues/Images/"+ uneCategVente.getImg_url() +"' alt='image de la categ' style='max-height : 270px;'>");
                 out.println("<div class='card-body text-dark'>");

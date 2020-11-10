@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/admin/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER/admin/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <a href="<%=request.getContextPath()%>/_deconnexion" class="text-dark px-3 text-decoration-none" type="submit">Se deconnecter</a>

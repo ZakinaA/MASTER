@@ -72,7 +72,7 @@ public class ServletCategorie extends HttpServlet {
             
             throws ServletException, IOException {
         String url = request.getRequestURI();
-        if(url.equals("/EquidaWeb20/ServletCategorie/ajouterCategorie"))
+        if(url.equals("/MASTER/ServletCategorie/ajouterCategorie"))
         {                   
             this.getServletContext().getRequestDispatcher("/vues/categorie/categorieAjouter.jsp" ).forward( request, response );
         }

@@ -77,7 +77,7 @@ public class ServletLogin extends HttpServlet {
         String url = request.getRequestURI();
 
           
-        if(url.equals("/EquidaWeb20/login"))
+        if(url.equals("/MASTER/login"))
         {  
             getServletContext().getRequestDispatcher("/vues/connexion/login.jsp").forward(request, response);
         }

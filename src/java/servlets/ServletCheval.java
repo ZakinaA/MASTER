@@ -83,7 +83,7 @@ public class ServletCheval extends HttpServlet {
             throws ServletException, IOException {
             String url = request.getRequestURI();
        
-       if(url.equals("/EquidaWeb20/ServletCheval/ajouterCheval"))
+       if(url.equals("/MASTER/ServletCheval/ajouterCheval"))
         {                   
             ArrayList<Cheval> lesChevaux = ChevalDAO.getLesChevaux(connection);
             request.setAttribute("pLesChevaux", lesChevaux);
@@ -103,18 +103,18 @@ public class ServletCheval extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/cheval/chevalAjouter.jsp" ).forward( request, response );
         }
        
-       if(url.equals("/EquidaWeb20/ServletCheval/listerCheval"))
+       if(url.equals("/MASTER/ServletCheval/listerCheval"))
         {  
             ArrayList<Cheval> lesChevaux = ChevalDAO.getLesChevaux(connection);
             request.setAttribute("pLesChevaux", lesChevaux);
             getServletContext().getRequestDispatcher("/vues/cheval/chevalLister.jsp").forward(request, response);
         }
        
-       if(url.equals("/EquidaWeb20/ServletCheval/deleteCheval"))
+       if(url.equals("/MASTER/ServletCheval/deleteCheval"))
         {  
             int idCheval = Integer.parseInt(request.getParameter("idCheval"));
             //ChevalDAO.deleteCheval(connection, idCheval);
-            response.sendRedirect("/EquidaWeb20/ServletCheval/listerCheval"); 
+            response.sendRedirect("/MASTER/ServletCheval/listerCheval"); 
         }
     }
 

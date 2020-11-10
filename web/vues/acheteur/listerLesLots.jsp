@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
@@ -69,7 +69,7 @@
                 out.println("    <h5 class='card-title'>"+ unCheval.getNom() +"</h5>");
                 out.println("    <p class='card-text'> Vendeur: "+ unCheval.getUnClient().getNom() +"</p>");
                 out.println("    <p class='card-text'> Race: "+ unCheval.getLeTypeDeCheval().getLibelle() +"</p>");
-                out.println("    <a href='/EquidaWeb20/acheteur/ficheCheval?idCheval="+ unCheval.getId() +"&idVente="+ idVente +"' class='btn btn-primary'>Plus d'informations</a>");
+                out.println("    <a href='/MASTER/acheteur/ficheCheval?idCheval="+ unCheval.getId() +"&idVente="+ idVente +"' class='btn btn-primary'>Plus d'informations</a>");
                 out.println("   </div>");
                 out.println("</div>");
                 out.println("</div>");

@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/MASTER/acheteur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
@@ -57,7 +57,7 @@
                 CategVente uneCategVente = lesCategVentes.get(i);
                 
                 out.println("<div class='col mb-4' id='wprock-img-zoom-hover'>");
-                out.println("<a href ='/EquidaWeb20/acheteur/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
+                out.println("<a href ='/MASTER/acheteur/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
                 out.println("<div class='card border-dark mb-5' id='wprock-img-zoom' style='max-width: 30rem;'>");
                 out.println("<img class='card-img-top' id='images' src='../vues/Images/"+ uneCategVente.getImg_url() +"' alt='image de la categ' style='max-height : 270px;'>");
                 out.println("<div class='card-body text-dark'>");

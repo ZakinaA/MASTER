@@ -6,15 +6,15 @@
     </context-param>
     <context-param>
         <param-name>urlconnexionjdbc</param-name>
-        <param-value>jdbc:mysql://localhost:3306/master</param-value>
+        <param-value>jdbc:mysql://172.20.0.241/MASTER</param-value>
     </context-param>
     <context-param>
         <param-name>utilisateurjdbc</param-name>
-        <param-value>root</param-value>
+        <param-value>USR_MASTER</param-value>
     </context-param>
     <context-param>
         <param-name>motdepassejdbc</param-name>
-        <param-value/>
+        <param-value>mpUserMaster</param-value>
     </context-param>
     <!--  Filtres 
     <filter>
@@ -23,7 +23,7 @@
     </filter>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
-        <url-pattern>/EquidaWeb20/*</url-pattern>
+        <url-pattern>/MASTER/*</url-pattern>
     </filter-mapping>
     
         <filter>
