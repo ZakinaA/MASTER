@@ -1,7 +1,13 @@
-<%@page import="java.util.Date"%>
+<%-- 
+    Document   : listerLesLots / Acheteur /
+    Created on : 27 oct. 2020, 04:33:13
+    Author     : noedu
+--%>
+
+<%@page import="modele.Cheval"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="modele.CategVente"%>
-<!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <!-- Required meta tags -->
@@ -30,9 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/EquidaWeb20/employee/Accueil">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/EquidaWeb20/vendeur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Item à ajouter
+                    <!-- Item Ã  ajouter
                     <li class="nav-item">
                       <a class="nav-link" href="#">Items</a>
                     </li>
@@ -60,77 +66,52 @@
             
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4"><% out.println("Bienvenue, " + session.getAttribute("employee") + "."); %></h1>
+                    <h1 class="display-4"><% out.println("Bienvenue, " + session.getAttribute("vendeur") + "."); %></h1>
                 </div>
             </div> 
-                    <% ArrayList<CategVente> lesCategVentes = (ArrayList)request.getAttribute("pLesCategVente"); %>
+        
+        <%ArrayList<Cheval> lesChevaux = (ArrayList) request.getAttribute("pLesChevaux");%>
+        
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-2">
-            <% for (int i = 0; i < lesCategVentes.size(); i++) {
-                CategVente uneCategVente = lesCategVentes.get(i);
-                
-                out.println("<div class='col mb-4' id='wprock-img-zoom-hover'>");
-                out.println("<a href ='/EquidaWeb20/vendeur/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
-                out.println("<div class='card border-dark mb-5' id='wprock-img-zoom' style='max-width: 30rem;'>");
-                out.println("<img class='card-img-top' id='images' src='../vues/Images/"+ uneCategVente.getImg_url() +"' alt='image de la categ' style='max-height : 270px;'>");
-                out.println("<div class='card-body text-dark'>");
-                out.println("<h5 class='card-title'>"+ uneCategVente.getLibelle() +" <span class='badge badge-success float-right'>" + uneCategVente.getNbVente() + " en cours</span></h5>");
-                //out.println("<p></p>");
+            <div class="row row-cols-md-1">
+                <div class="card-deck">
+            <% for (int i = 0; i < lesChevaux.size(); i++) {
+                Cheval unCheval = lesChevaux.get(i);
+                out.println("<div class='col mb-3'>");
+                out.println("<div class='card' style='width: 18rem; '>"); //
+                out.println("   <img src='../vues/Images/"+ unCheval.getImg_url() +"' class='card-img-top' alt='#' style='height: 10rem;'>");
+                //out.println("   <img src='../vues/Images/ete.jpg' class='card-img-top' alt='...'>"); //
+                out.println("   <div class='card-body'>");
+                out.println("    <h5 class='card-title'>"+ unCheval.getNom() +"</h5>");
+                out.println("    <p class='card-text'> Vendeur: "+ unCheval.getUnClient().getNom() +"</p>");
+                out.println("    <p class='card-text'> Race: "+ unCheval.getLeTypeDeCheval().getLibelle() +"</p>");
+                out.println("    <a href='/EquidaWeb20/vendeur/ficheCheval?idCheval="+ unCheval.getId() +"' class='btn btn-primary'>Plus d'informations</a>");
+                out.println("   </div>");
                 out.println("</div>");
                 out.println("</div>");
-                out.println("</a>");
-                out.println("</div>");              
+                             
                 
+
             }
             %>
             </div>
+            </div>
         </div>
-        <!-- Optional JavaScript -->
-        <style>
 
-             #wprock-img-zoom-hover #wprock-img-zoom {
-                overflow: hidden;
-                position: relative; 
-            }
-            #wprock-img-zoom-hover #wprock-img-zoom img {
-                max-width: 100%;
-                -moz-transition: all 0.8s;
-                -webkit-transition: all 0.8s;
-                transition: all 0.8s;
-            }
-            
-            #wprock-img-zoom-hover:hover #wprock-img-zoom img {
-                -moz-transform: scale(1.06);
-                -webkit-transform: scale(1.06);
-                transform: scale(1.06);
-            }
-
-        </style>
-
-        <!-- Optional JavaScript -->
-        <script type="text/javascript">
-            var myVar=setInterval(function () {myTimer()}, 1000);
-            var counter = 0;
-            function myTimer() {
-                document.getElementById("demo").innerHTML = new Date().toISOString().substr(11, 8);;
-            }
-        </script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     </body>
-    
     <div class="container p-5">
         <hr class="featurette-divider p-5">
         <footer>
             <p class="float-right">
-                Pablo, Melvyn, Noé.
+                Pablo, Melvyn, NoÃ©.
             </p>
             <p>
-                2020 SIO2, Lycée Jean Rostand ·
-                <a href="">Lycée</a>  · 
+                2020 Â· SIO2 Â· LycÃ©e Jean Rostand
             </p>
         </footer>
     </div>

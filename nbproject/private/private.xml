@@ -5,18 +5,25 @@
         <group>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/admin/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/vendeur/Vendeur.jsp</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/connexion/login.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/admin/Admin.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/src/java/servlets/ServletAdmin.java</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/src/java/servlets/ServletVendeur.java</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/src/java/database/UserDAO.java</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/vendeur/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/acheteur/listerLesVentesParCateg.jsp</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/employee/Employee.jsp</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/employee/listerLesVentesParCateg.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/acheteur/Acheteur.jsp</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/employee/listerLesLots.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/src/java/servlets/ServletConnexion.java</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/vendeur/listerLesLots.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/src/java/servlets/ServletAcheteur.java</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/admin/listerLesLots.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/acheteur/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/WEB-INF/web.xml</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/index.html</file>
+            <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/employee/ficheCheval.jsp</file>
             <file>file:/E:/DUBOSQ_Noé/SLAM/SLAM45/equida2020/web/vues/acheteur/listerLesLots.jsp</file>
         </group>
     </open-files>

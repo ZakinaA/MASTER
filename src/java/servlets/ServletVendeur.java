@@ -5,14 +5,20 @@
  */
 package servlets;
 
+import database.CategVenteDAO;
+import database.VenteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.CategVente;
+import modele.Cheval;
+import modele.Vente;
 
 /**
  *
@@ -66,7 +72,39 @@ public class ServletVendeur extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String url = request.getRequestURI();
+        if (url.equals(request.getContextPath() + "/vendeur/Accueil")) {
+            ArrayList<CategVente> lesCategVentes = CategVenteDAO.getLesCategVentes(connection);
+            request.setAttribute("pLesCategVente", lesCategVentes);
+                    
+            this.getServletContext().getRequestDispatcher("/vues/vendeur/Vendeur.jsp").forward(request, response);
+        }
+        
+        if (url.equals(request.getContextPath() + "/vendeur/ventes")) {
+            String codeCat = (String)request.getParameter("categ");
+            ArrayList<Vente> lesVentes = VenteDAO.getVentesByCateg(connection, codeCat);
+            request.setAttribute("pLesVentes", lesVentes);
+            getServletContext().getRequestDispatcher("/vues/vendeur/listerLesVentesParCateg.jsp").forward(request, response);
+        }
+        
+        if (url.equals(request.getContextPath() + "/vendeur/lots")) {
+            String idVente = (String)request.getParameter("idVente");
+            ArrayList<Cheval> lesChevaux = VenteDAO.getLesChevaux(connection, idVente);
+            request.setAttribute("pLesChevaux", lesChevaux);
+            getServletContext().getRequestDispatcher("/vues/vendeur/listerLesLots.jsp").forward(request, response);
+   
+        }
+        
+        if (url.equals(request.getContextPath() + "/vendeur/ficheCheval")) {
+            String idCheval = (String)request.getParameter("idCheval");
+            Cheval unCheval = VenteDAO.getInfosCheval(connection, idCheval);
+            //Lot unLot = ;
+            request.setAttribute("pIdCheval", unCheval);
+            //request.setAttribute("pIdLot", unLot);
+            getServletContext().getRequestDispatcher("/vues/vendeur/ficheCheval.jsp").forward(request, response);
+   
+        }
     }
 
     /**

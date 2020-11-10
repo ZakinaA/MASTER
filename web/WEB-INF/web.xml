@@ -190,6 +190,23 @@
         <servlet-name>ServletVendeur</servlet-name>
         <url-pattern>/ServletVendeur</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVendeur</servlet-name>
+        <url-pattern>/vendeur/Accueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVendeur</servlet-name>
+        <url-pattern>/vendeur/ventes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVendeur</servlet-name>
+        <url-pattern>/vendeur/lots</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVendeur</servlet-name>
+        <url-pattern>/vendeur/ficheCheval</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

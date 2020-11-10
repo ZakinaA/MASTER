@@ -1,21 +1,24 @@
-<%@page import="java.util.Date"%>
+<%-- 
+    Document   : listerLesVentesParCateg
+    Created on : 27 oct. 2020, 03:57:42
+    Author     : noedu
+--%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="modele.CategVente"%>
-<!doctype html>
-<html lang="fr">
+<%@page import="modele.Vente"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-        <title>Equida - Accueil</title>
+
+        <title>LISTE DES VENTES</title>
     </head>
     <body>
-
-
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -32,7 +35,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/EquidaWeb20/vendeur/Accueil">Accueil <span class="sr-only">(current)</span></a>
                     </li>
-                    <!-- Item à ajouter
+                    <!-- Item Ã  ajouter
                     <li class="nav-item">
                       <a class="nav-link" href="#">Items</a>
                     </li>
@@ -47,90 +50,95 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/ajouterCheval">Ajouter Cheval</a>
                             <a class="dropdown-item" href="/EquidaWeb20/ServletCheval/listerCheval">Lister les chevaux</a>
-                            
+
                         </div>
                     </li>
                 </ul>
-                <a href="#" class="text-info px-3 text-decoration-none">Profil</a>
-                <a href="<%=request.getContextPath()%>/_deconnexion" class="text-danger px-3 text-decoration-none" type="submit">Se deconnecter</a>
+                <a href="<%=request.getContextPath()%>/_deconnexion" class="text-dark px-3 text-decoration-none" type="submit">Se deconnecter</a>
             </div>
         </nav>
-        <!-- FIN DE LA NAVBAR -->
 
-            
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4"><% out.println("Bienvenue, " + session.getAttribute("vendeur") + "."); %></h1>
-                </div>
-            </div> 
-                    <% ArrayList<CategVente> lesCategVentes = (ArrayList)request.getAttribute("pLesCategVente"); %>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-2">
-            <% for (int i = 0; i < lesCategVentes.size(); i++) {
-                CategVente uneCategVente = lesCategVentes.get(i);
-                
-                out.println("<div class='col mb-4' id='wprock-img-zoom-hover'>");
-                out.println("<a href ='/EquidaWeb20/vendeur/ventes?categ="+ uneCategVente.getCode()+"' class='text-decoration-none text-dark'>");
-                out.println("<div class='card border-dark mb-5' id='wprock-img-zoom' style='max-width: 30rem;'>");
-                out.println("<img class='card-img-top' id='images' src='../vues/Images/"+ uneCategVente.getImg_url() +"' alt='image de la categ' style='max-height : 270px;'>");
-                out.println("<div class='card-body text-dark'>");
-                out.println("<h5 class='card-title'>"+ uneCategVente.getLibelle() +" <span class='badge badge-success float-right'>" + uneCategVente.getNbVente() + " en cours</span></h5>");
-                //out.println("<p></p>");
-                out.println("</div>");
-                out.println("</div>");
-                out.println("</a>");
-                out.println("</div>");              
-                
-            }
-            %>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4"><% out.println("Bienvenue, " + session.getAttribute("vendeur") + "."); %></h1>
             </div>
+        </div> 
+            
+
+        <div class="container-lg">
+            <h1>LISTE DES VENTES</h1>
+            <%
+                ArrayList<Vente> lesVentes = (ArrayList) request.getAttribute("pLesVentes");
+            %>
+            <table class="table table-hover table-striped shadow-lg p-3 mb-5 bg-white rounded">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOM</th>
+                        <th>DATE DEBUT</th>
+                        <th>CATEGORIE</th>
+                        <th>VILLE</th>
+                        <th>Boxes</th>  
+                        <th>LOTS</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <%
+                            for (int i = 0; i < lesVentes.size(); i++) {
+
+                                Vente uneVente = lesVentes.get(i);
+                                out.println("<tr>");
+                                out.println("<th scope='row'>");
+                                out.println(uneVente.getId());
+                                out.println("</th>");
+
+                                out.println("<td> ");
+                                out.println(uneVente.getNom());
+                                out.println("</td>");
+
+                                out.println("<td> ");
+                                out.println(uneVente.getDateDebutVente());
+                                out.println("</td>");
+
+                                out.println("<td> ");
+                                out.println(uneVente.getUneCategVente().getLibelle());
+                                out.println("</td>");
+
+                                out.println("<td> ");
+                                out.println(uneVente.getUnLieu().getVille());
+                                out.println("</td>");
+
+                                out.println("<td> ");
+                                out.println(uneVente.getUnLieu().getNbBoxes());
+                                out.println("</td>");
+
+                                out.println("<td><a href ='../vendeur/lots?idVente=" + uneVente.getId() + "'>");
+                                out.println("Lister les lots");
+                                out.println("</td>");
+
+                            }
+                        %>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
         <!-- Optional JavaScript -->
-        <style>
-
-             #wprock-img-zoom-hover #wprock-img-zoom {
-                overflow: hidden;
-                position: relative; 
-            }
-            #wprock-img-zoom-hover #wprock-img-zoom img {
-                max-width: 100%;
-                -moz-transition: all 0.8s;
-                -webkit-transition: all 0.8s;
-                transition: all 0.8s;
-            }
-            
-            #wprock-img-zoom-hover:hover #wprock-img-zoom img {
-                -moz-transform: scale(1.06);
-                -webkit-transform: scale(1.06);
-                transform: scale(1.06);
-            }
-
-        </style>
-
-        <!-- Optional JavaScript -->
-        <script type="text/javascript">
-            var myVar=setInterval(function () {myTimer()}, 1000);
-            var counter = 0;
-            function myTimer() {
-                document.getElementById("demo").innerHTML = new Date().toISOString().substr(11, 8);;
-            }
-        </script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
     </body>
-    
     <div class="container p-5">
         <hr class="featurette-divider p-5">
         <footer>
             <p class="float-right">
-                Pablo, Melvyn, Noé.
+                Pablo, Melvyn, NoÃ©.
             </p>
             <p>
-                2020 SIO2, Lycée Jean Rostand ·
-                <a href="">Lycée</a>  · 
+                2020 Â· SIO2 Â· LycÃ©e Jean Rostand
             </p>
         </footer>
     </div>
