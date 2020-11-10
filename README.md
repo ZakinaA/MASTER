@@ -72,5 +72,6 @@ Aucune évolution de l'application n'est prévue.
 # 5. MODELISATION
 ## 5.1 Modèle relationnel et base de données
 ## 5.2 Diagramme de classes
+![alt text](https://github.com/ZakinaA/MASTER/blob/Noe/diagClasse.PNG "Logo Title Text 1")
 # ARCHITECTURE APPLICATIVE
 # QUALIFICATION DU LOGICIEL
