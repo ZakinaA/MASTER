@@ -145,20 +145,18 @@ public class ServletAcheteur extends HttpServlet {
         EnchereForm form = new EnchereForm();
         Enchere uneEnchere = form.ajouterEnchere(request);
         
-        /* Stockage du formulaire et de l'objet dans l'objet request */
         request.setAttribute("form", form);
         request.setAttribute("pEnchere", uneEnchere);
 		
         if (form.getErreurs().isEmpty()){
-            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du client 
             LotDAO.encherirSurUnLot(connection, uneEnchere);
             getServletContext().getRequestDispatcher("/vues/acheteur/enchereRecap.jsp" ).forward( request, response );
-            response.sendRedirect("");
         }
         else {
             request.setAttribute("errMessage", "Verifier le montant de l'enchère");
             request.getRequestDispatcher("/vues/connexion/login.jsp").forward(request, response);
         }
+        
     }
 
     /**

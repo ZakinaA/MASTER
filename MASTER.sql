@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `enchere` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `montant` int(11) DEFAULT NULL,
   `id_lot` int(11) DEFAULT NULL,
-  `dateEnchere` datetime DEFAULT CURRENT_TIMESTAMP,
+  `dateEnchere` datetime,
   PRIMARY KEY (`id`),
   KEY `FK_ENCHERE_LOT` (`id_lot`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;

@@ -5,11 +5,14 @@
  */
 package formulaires;
 
+import database.LotDAO;
+import database.UserDAO;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import modele.Enchere;
 import modele.Lot;
+import modele.Utilisateur;
 
 /**
  *
@@ -59,5 +62,6 @@ public class EnchereForm {
                
        
         return uneEnchere;
+
     }
 }

@@ -128,7 +128,6 @@ public class ServletConnexion extends HttpServlet {
             } else {
                 System.out.println("Erreur! <" + userRole + ">");
                 request.setAttribute("errMessage", userRole);
-
                 request.getRequestDispatcher("/vues/connexion/login.jsp").forward(request, response);
             }
             

@@ -251,6 +251,7 @@ public class VenteDAO {
                 unCheval.setNom(rs.getString("nom"));
                 unCheval.setSexe(rs.getString("sexe"));
                 unCheval.setImg_url(rs.getString("img_url"));
+                unCheval.setSIRE(rs.getString("SIRE"));
                
                 Cheval unChevalPere = new Cheval();
                 unChevalPere.setNom(rs.getString("pere"));

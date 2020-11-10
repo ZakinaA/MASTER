@@ -69,10 +69,6 @@
         <servlet-class>servlets.ServletConnexion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletListeVenteParCateg</servlet-name>
-        <servlet-class>servlets.ServletListeVenteParCateg</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ServletAdmin</servlet-name>
         <servlet-class>servlets.ServletAdmin</servlet-class>
     </servlet>
@@ -190,11 +186,11 @@
         <servlet-name>ServletAcheteur</servlet-name>
         <url-pattern>/acheteur/encherir</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ServletAcheteur</servlet-name>
         <url-pattern>/acheteur/enchereRecap</url-pattern>
     </servlet-mapping>
-
     <session-config>
         <session-timeout>
             30

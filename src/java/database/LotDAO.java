@@ -103,31 +103,29 @@ public class LotDAO {
     
     }
     
-    public String verifEnchere(Connection connection, Enchere uneEnchere, int idLot){
+    public int verifEnchere(Connection connection, Enchere uneEnchere, int idLot){
         int montant = uneEnchere.getMontant();
-
-        
         int montantDB;
-        String validation = "";
         
         try {
-            requete = connection.prepareStatement("SELECT SELECT MAX(enchere.montant) as maxMontant from enchere, lot where enchere.id_lot = ?");
+            requete = connection.prepareStatement("SELECT MAX(enchere.montant) as maxMontant from enchere, lot where enchere.id_lot = ?");
+            requete.setInt(1, idLot);
             rs = requete.executeQuery();
+            System.out.println("requete:" + requete);
             
             while (rs.next()) {
                 montantDB = rs.getInt("maxMontant");
 
-                if (montant > 999999) {
-                    return "Le montant ne peut pas être supérieur à 999.999€.";
-                } else if (montant < montantDB) {
-                    return "Le montant saisie doit être supérieur au prix actuel";
+                if (montant <= montantDB) {
+                    System.out.println("montant < montantdb");
+                    return 1;    
                 }
             }
           
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return "Erreur de montant";
+        System.out.println("montant: " + montant);
+        return montant;
     }
 }
