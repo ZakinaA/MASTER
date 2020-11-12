@@ -63,8 +63,7 @@ Aucune évolution de l'application n'est prévue.
 # 4. SPECIFICATIONS TECHNIQUES
 ## 4.1 Environnement de production
 ### 4.1.1 Environnement matériel
-- Serveur Linux (Debian 8) 
-- 
+- Serveur Linux (Debian 8)
 
 ### 4.1.2 Environnement logiciel
 - la JVM1.7.0_121_b00
@@ -73,11 +72,23 @@ Aucune évolution de l'application n'est prévue.
 
 ## 4.2 Environnement de développement
 ### 4.2.1 Environnement matériel
+- Ordinateur (personnelle ou scolaire)
 ### 4.2.2 Environnement logiciel
+- PHP Storm
+- NetBeans
+- GitHub pour sauvegarder et pour la gestion des versions
+
 ## 4.3 Mise en œuvre
+- Installation automatique 
+
 ## 4.4 Exigences de programmation
+- Git
+- Boostrap 
+
 # 5. MODELISATION
 ## 5.1 Modèle relationnel et base de données
+CategVente ( code, libelle, img_url)
+Cheval ( id, nom, sexe, #prixDepart, SIRE, img_url, #isActive, #id_client, #id_typeCheval, #id_pere, #id_mere, #idEntraineur)
 ## 5.2 Diagramme de classes
 ![alt text](https://github.com/ZakinaA/MASTER/blob/Noe/diagClasse.PNG "Logo Title Text 1")
 # ARCHITECTURE APPLICATIVE
