@@ -63,7 +63,14 @@ Aucune évolution de l'application n'est prévue.
 # 4. SPECIFICATIONS TECHNIQUES
 ## 4.1 Environnement de production
 ### 4.1.1 Environnement matériel
+- Serveur Linux (Debian 8) 
+- 
+
 ### 4.1.2 Environnement logiciel
+- la JVM1.7.0_121_b00
+- le serveur d'application Tomcat 8.0 et son interface d'adminastration
+- un serveur de base de données mysql et son interface d'administration PHPmyAdmin
+
 ## 4.2 Environnement de développement
 ### 4.2.1 Environnement matériel
 ### 4.2.2 Environnement logiciel
